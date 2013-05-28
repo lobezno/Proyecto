@@ -19,12 +19,20 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import javax.swing.JTextField;
+import java.awt.Font;
+import javax.swing.JPasswordField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Inicio extends JFrame {
 
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
 	private JButton btnNewButton;
+	private JTextField textField;
+	private JPasswordField passwordField;
+	private JButton btnNewButton_1;
+	
 
 	/**
 	 * Launch the application.
@@ -46,6 +54,7 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
+		setTitle("sCooL");
 	init();
 	createEvents();
 	}
@@ -81,23 +90,57 @@ public class Inicio extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
 		
 		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario.setFont(new Font("Verdana", Font.BOLD, 18));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
+		lblContrasea.setFont(new Font("Verdana", Font.BOLD, 18));
+		
+		passwordField = new JPasswordField();
+		btnNewButton_1 = new JButton("");
+		btnNewButton_1.setBackground(UIManager.getColor("textHighlight"));
+		btnNewButton_1.setToolTipText("Entar");
+		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/accept.png")));
+	
+	
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(150)
-					.addComponent(lblUsuario)
-					.addContainerGap(594, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap(633, Short.MAX_VALUE)
 					.addComponent(btnNewButton))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnNewButton_1))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(225)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblUsuario)
+								.addComponent(lblContrasea))
+							.addGap(38)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+								.addComponent(passwordField, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))))
+					.addGap(215))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(118, Short.MAX_VALUE)
-					.addComponent(lblUsuario)
-					.addGap(317)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(266, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUsuario))
+					.addGap(18)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblContrasea))
+					.addGap(18)
+					.addComponent(btnNewButton_1)
+					.addGap(74)
 					.addComponent(btnNewButton))
 		);
 		contentPane.setLayout(gl_contentPane);
@@ -113,6 +156,17 @@ public class Inicio extends JFrame {
 				System.exit(0);
 			}
 		});
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		
+
+				
+			}
+		});
+		
+	
+		
 		
 	}
 }

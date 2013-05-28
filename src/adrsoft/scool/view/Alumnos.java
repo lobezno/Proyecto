@@ -188,7 +188,7 @@ public class Alumnos extends JFrame {
 	private void createEvents(){
 		mntmInformacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showConfirmDialog(null, "asd","Titulo",JOptionPane.DEFAULT_OPTION);
+				JOptionPane.showConfirmDialog(null, "Proyecto de CFGS DAM 2013 \nCreado por: Adrian Peña Gomez\nProyecto de fin de ciclo del grado superior Desarrollo de Aplicaciones Multiplataforma\nI.E.S. Miguel Herrero Pereda 2013","Acerca de..",JOptionPane.DEFAULT_OPTION);
 				
 			}
 		});
