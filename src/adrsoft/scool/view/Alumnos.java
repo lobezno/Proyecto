@@ -22,6 +22,9 @@ import javax.swing.JDesktopPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTree;
 import javax.swing.SwingConstants;
+
+import com.toedter.calendar.JCalendar;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -43,6 +46,7 @@ public class Alumnos extends JFrame {
 	private JButton btnNewButton_2;
 	private JButton btnNewButton_3;
 	private JButton btnNewButton_4;
+	private JCalendar calendario;
 
 	/**
 	 * Launch the application.
@@ -73,7 +77,10 @@ public class Alumnos extends JFrame {
 		setTitle("Bienvenido, Alumno");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1005, 600);
+		setBounds(100, 100, 1069, 600);
+		calendario = new JCalendar();
+		
+		
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.GRAY);
@@ -130,6 +137,8 @@ public class Alumnos extends JFrame {
 		desktopPane.setBackground(new Color(153, 204, 255));
 		
 		JPanel panel = new JPanel();
+		panel.add(calendario);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -138,8 +147,8 @@ public class Alumnos extends JFrame {
 					.addGap(18)
 					.addComponent(desktopPane, GroupLayout.PREFERRED_SIZE, 699, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(51, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -149,7 +158,7 @@ public class Alumnos extends JFrame {
 						.addComponent(desktopPane, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(29)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(141, Short.MAX_VALUE))
 		);
 		
