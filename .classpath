@@ -6,5 +6,15 @@
 	<classpathentry kind="lib" path="libs/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="lib" path="libs/jgoodies-looks-2.4.1.jar"/>
 	<classpathentry kind="lib" path="libs/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="libs/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate-commons-annotations-4.0.2.Final.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate-core-4.2.2.Final.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="libs/javassist-3.15.0-GA.jar"/>
+	<classpathentry kind="lib" path="libs/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="libs/jboss-transaction-api_1.1_spec-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.18-bin.jar"/>
+	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

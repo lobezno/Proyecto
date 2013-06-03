@@ -15,14 +15,27 @@ import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.util.List;
+
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
+
+import adrsoft.scool.pojos.Alumnos;
 
 public class Inicio extends JFrame {
 
@@ -32,7 +45,8 @@ public class Inicio extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private JButton btnNewButton_1;
-	
+	private String textmail;
+	private Session session;
 
 	/**
 	 * Launch the application.
@@ -55,8 +69,10 @@ public class Inicio extends JFrame {
 	 */
 	public Inicio() {
 		setTitle("sCooL");
-	init();
-	createEvents();
+		createConnection();
+		init();
+		createEvents();
+	
 	}
 	
 	private class SwingAction extends AbstractAction {
@@ -89,7 +105,7 @@ public class Inicio extends JFrame {
 		btnNewButton.setBackground(UIManager.getColor("textHighlight"));
 		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
 		
-		JLabel lblUsuario = new JLabel("Usuario");
+		JLabel lblUsuario = new JLabel("Email");
 		lblUsuario.setFont(new Font("Verdana", Font.BOLD, 18));
 		
 		textField = new JTextField();
@@ -158,10 +174,24 @@ public class Inicio extends JFrame {
 		});
 		
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
 		
 
-				
+			public void actionPerformed(ActionEvent arg0) {
+				//mail tiene que contener un mail de la base de datos
+				textmail = textField.getText();
+
+		            Query query = session.createQuery("SELECT a FROM Alumnos a");
+		            List<Alumnos> alumnos = query.list();
+		            for (Alumnos alumno : alumnos) {
+		            	if(alumno.getEmail().equals(textmail)){
+		            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre());
+							alu.setVisible(true);
+							contentPane.setEnabled(false);
+							contentPane.setVisible(false);	
+						
+		            	}
+		            }
+
 			}
 		});
 		
@@ -169,4 +199,16 @@ public class Inicio extends JFrame {
 		
 		
 	}
+	
+	private void createConnection() {
+     	
+		SessionFactory sessionFactory;
+        Configuration configuration = new Configuration();
+        configuration.configure();
+        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        session = sessionFactory.openSession();
+	
+}
+
 }

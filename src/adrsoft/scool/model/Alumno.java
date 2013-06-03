@@ -91,5 +91,11 @@ public class Alumno {
 		this.club = club;
 	}
 	
+	@Override
+	public String toString(){
+		return apellidos;
+		
+	}
+	
 
 }
