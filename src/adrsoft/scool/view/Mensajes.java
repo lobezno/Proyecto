@@ -14,19 +14,21 @@ import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 import javax.swing.JTable;
+import java.awt.Color;
 
 public class Mensajes extends JInternalFrame {
-	private JTable table;
 
 
 	/**
 	 * Create the frame.
 	 */
 	public Mensajes() {
+		((javax.swing.plaf.basic.BasicInternalFrameUI) 
+				getUI()).setNorthPane(null);
 		setBackground(UIManager.getColor("textHighlight"));
 		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 410);
-		
+		setBorder(null);
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(UIManager.getColor("textHighlight"));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -42,26 +44,22 @@ public class Mensajes extends JInternalFrame {
 		tabbedPane.setBackground(UIManager.getColor("activeCaption"));
 		JPanel panel = new JPanel();
 		
-		panel.setBackground(UIManager.getColor("activeCaption"));
+		panel.setBackground(new Color(153, 204, 255));
 		tabbedPane.addTab("Buzón de entrada", null, panel, null);
-		
-		table = new JTable();
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addComponent(table, GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+				.addGap(0, 705, Short.MAX_VALUE)
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
-					.addGap(20)
-					.addComponent(table, GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 346, Short.MAX_VALUE)
 		);
 		panel.setLayout(gl_panel);
 		tabbedPane.setIconAt(0,new ImageIcon(Mensajes.class.getResource("/adrsoft/scool/resources/images/low/mail_receive.png")));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(UIManager.getColor("activeCaption"));
+		panel_1.setBackground(new Color(153, 204, 255));
 		
 		tabbedPane.addTab("Mensajes enviados", null, panel_1, null);
 		
@@ -83,7 +81,35 @@ public class Mensajes extends JInternalFrame {
 		);
 		panel_1.setLayout(gl_panel_1);
 		tabbedPane.setIconAt(1,new ImageIcon(Mensajes.class.getResource("/adrsoft/scool/resources/images/low/mail_send.png")));
-
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(new Color(153, 204, 255));
+		tabbedPane.addTab("", null, panel_2, null);
+		
+		JButton btnNewButton = new JButton("Enviar Mensaje");
+		
+		JButton btnContactarConTutor = new JButton("Contactar con Tutor");
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(121)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnContactarConTutor, GroupLayout.PREFERRED_SIZE, 413, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 413, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(171, Short.MAX_VALUE))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(69)
+					.addComponent(btnNewButton)
+					.addGap(18)
+					.addComponent(btnContactarConTutor)
+					.addContainerGap(213, Short.MAX_VALUE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		tabbedPane.setIconAt(2,new ImageIcon(Mensajes.class.getResource("/adrsoft/scool/resources/images/low/mail.png")));
 		
 
 		getContentPane().setLayout(groupLayout);

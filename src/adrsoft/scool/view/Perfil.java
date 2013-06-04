@@ -55,12 +55,13 @@ public class Perfil extends JInternalFrame {
 		setBackground(UIManager.getColor("activeCaption"));
 		setBorder(null);
 		setBounds(100, 100, 710, 622);
-	
+		((javax.swing.plaf.basic.BasicInternalFrameUI) 
+				getUI()).setNorthPane(null);
 		init();
 //		conexion();
 		createEvents();
 	}
-	
+
 	private void conexion() {
 		SessionFactory sessionFactory;
 		Configuration configuration = new Configuration();
@@ -68,7 +69,7 @@ public class Perfil extends JInternalFrame {
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		Session session=sessionFactory.openSession();
-		
+
 	}
 
 	private void init(){
@@ -83,15 +84,15 @@ public class Perfil extends JInternalFrame {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addComponent(scrollPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
 		);
-		
+
 		JPanel panelPerfil = new JPanel();
 		panelPerfil.setBackground(UIManager.getColor("activeCaption"));
 		scrollPane.setViewportView(panelPerfil);
-		
+
 		JPanel panelDatos = new JPanel();
 		panelDatos.setBackground(UIManager.getColor("activeCaption"));
 		panelDatos.setBorder(new TitledBorder(null, "Datos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		
+
 		JPanel panelBotones = new JPanel();
 		panelBotones.setBackground(UIManager.getColor("activeCaption"));
 		GroupLayout gl_panelPerfil = new GroupLayout(panelPerfil);
@@ -113,55 +114,55 @@ public class Perfil extends JInternalFrame {
 					.addComponent(panelBotones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(676, Short.MAX_VALUE))
 		);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre");
-		
+
 		JLabel lblApellidos = new JLabel("Apellidos");
-		
+
 		JLabel lblDireccion = new JLabel("Direccion");
-		
+
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setBackground(UIManager.getColor("activeCaption"));
 		textField.setEditable(false);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_1.setBackground(UIManager.getColor("activeCaption"));
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_2.setBackground(UIManager.getColor("activeCaption"));
 		textField_2.setEditable(false);
 		textField_2.setColumns(10);
-		
+
 		textField_3 = new JTextField();
 		textField_3.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_3.setBackground(UIManager.getColor("activeCaption"));
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
-		
+
 		JLabel lblCurso = new JLabel("Curso");
-		
+
 		textField_4 = new JTextField();
 		textField_4.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_4.setBackground(UIManager.getColor("activeCaption"));
 		textField_4.setEditable(false);
 		textField_4.setColumns(10);
-		
+
 		JLabel lblTelefono = new JLabel("Telefono");
-		
+
 		JLabel lblEmail = new JLabel("Email");
-		
+
 		textField_5 = new JTextField();
 		textField_5.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_5.setBackground(UIManager.getColor("activeCaption"));
 		textField_5.setEditable(false);
 		textField_5.setColumns(10);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Perfil.class.getResource("/adrsoft/scool/resources/images/high/user.png")));
 		GroupLayout gl_panelDatos = new GroupLayout(panelDatos);
@@ -232,19 +233,19 @@ public class Perfil extends JInternalFrame {
 					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		panelDatos.setLayout(gl_panelDatos);
-		
+
 		btnNewButton = new JButton("Editar Perfil");
 		btnNewButton.setBackground(UIManager.getColor("textHighlight"));
 		btnNewButton.setIcon(new ImageIcon(Perfil.class.getResource("/adrsoft/scool/resources/images/low/edit.png")));
-		
+
 		btnNewButton_1 = new JButton("Guardar");
 		btnNewButton_1.setBackground(UIManager.getColor("textHighlight"));
 		btnNewButton_1.setMaximumSize(new Dimension(87, 23));
 		btnNewButton_1.setIcon(new ImageIcon(Perfil.class.getResource("/adrsoft/scool/resources/images/low/save.png")));
-	
+
 		btnNewButton_1.setVisible(false);
-	
-		
+
+
 		GroupLayout gl_panelBotones = new GroupLayout(panelBotones);
 		gl_panelBotones.setHorizontalGroup(
 			gl_panelBotones.createParallelGroup(Alignment.LEADING)
@@ -266,18 +267,18 @@ public class Perfil extends JInternalFrame {
 		panelBotones.setLayout(gl_panelBotones);
 		panelPerfil.setLayout(gl_panelPerfil);
 		getContentPane().setLayout(groupLayout);
-		
+
 		rellenarPerfil();
 	}
 	private void rellenarPerfil() {
 
       
         }
-		
-	
+
+
 
 	private void createEvents(){
-		
+
 		//Botón Editar
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -290,7 +291,7 @@ public class Perfil extends JInternalFrame {
 				btnNewButton_1.setVisible(true);
 			}
 		});
-		
+
 		//Botón guardar
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -303,24 +304,24 @@ public class Perfil extends JInternalFrame {
 				btnNewButton_1.setVisible(false);
 			}
 		});
-		
+
 	}
-	
+
 	public void setNombreText(String nombre){
 		this.textField.setText(nombre);
 	}
-	
+
 	public void setApellidosText(String ape){
 		this.textField_2.setText(ape);
 	}
-	
+
 	public void setDireccionText(String dire){
 		this.textField_1.setText(dire);
 	}
 	public void setEmailText(String mail){
 		this.textField_5.setText(mail);
 	}
-	
+
 	public void setTelefonoText(String tele){
 		this.textField_4.setText(tele);
 	}

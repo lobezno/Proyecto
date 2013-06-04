@@ -40,7 +40,9 @@ public class Club extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Club() {
-		getContentPane().setBackground(UIManager.getColor("textHighlight"));
+		getContentPane().setBackground(new Color(153, 204, 255));
+		((javax.swing.plaf.basic.BasicInternalFrameUI) 
+				getUI()).setNorthPane(null);
 		init();
 		createEvents();
 
@@ -67,10 +69,10 @@ public class Club extends JInternalFrame {
 
 	private void init() {
 		JPanel panel = new JPanel();
-		panel.setBackground(UIManager.getColor("textHighlight"));
+		panel.setBackground(new Color(153, 204, 255));
 		
 		clubDesktopPane = new JDesktopPane();
-		clubDesktopPane.setBackground(UIManager.getColor("textHighlight"));
+		clubDesktopPane.setBackground(new Color(153, 204, 255));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

@@ -77,6 +77,7 @@ public class AlumnosMain extends JFrame {
 	private String email;
 	private String nombre;
 	private JLabel lblMouseOver;
+	private Notas mNotas;
 
 	/**
 	 * Launch the application.
@@ -178,7 +179,7 @@ public class AlumnosMain extends JFrame {
 		toolBar.setBackground(UIManager.getColor("textHighlight"));
 		
 		mDesktopPane = new JDesktopPane();
-		mDesktopPane.setBackground(UIManager.getColor("textHighlight"));
+		mDesktopPane.setBackground(new Color(153, 204, 255));
 		contentPane.add(mDesktopPane);
 		JPanel panel = new JPanel();
 		panel.add(mCalendario);
@@ -196,23 +197,23 @@ public class AlumnosMain extends JFrame {
 					.addContainerGap()
 					.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(lblMouseOver, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblMouseOver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+						.addComponent(mDesktopPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 707, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(4)
-					.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
+						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
@@ -232,12 +233,13 @@ public class AlumnosMain extends JFrame {
 		toolBar.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("");
-	
+
 		btnNewButton_2.setBackground(UIManager.getColor("textHighlight"));
 		btnNewButton_2.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/tablet.png")));
 		toolBar.add(btnNewButton_2);
 		
 		btnNewButton_3 = new JButton("");
+		
 		btnNewButton_3.setBackground(UIManager.getColor("textHighlight"));
 		btnNewButton_3.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/office_folders.png")));
 		toolBar.add(btnNewButton_3);
@@ -338,6 +340,26 @@ public class AlumnosMain extends JFrame {
 		
 			}
 		});
+		
+		//boton de notas
+		btnNewButton_2.addActionListener(new ActionListener() {
+			
+
+			public void actionPerformed(ActionEvent arg0) {
+				mNotas = new Notas();
+				mNotas.setVisible(true);
+				mNotas.setBorder(null);
+				mDesktopPane.add(mNotas);
+				try {
+					mNotas.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					e.printStackTrace();
+				}
+				mNotas.setUI(null);
+			}
+		});
+	
+		
 
 		//Boton de login 
 		mntmLogin.addActionListener(new ActionListener() {
@@ -417,6 +439,18 @@ public class AlumnosMain extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lblMouseOver.setText("Club");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblMouseOver.setText("");
+			}
+		});
+		
+		//mouseover webs
+		btnNewButton_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				lblMouseOver.setText("Web / Intranet");
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {

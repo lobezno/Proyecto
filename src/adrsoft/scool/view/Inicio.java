@@ -47,7 +47,7 @@ public class Inicio extends JFrame {
 	private JButton btnNewButton_1;
 	private String textmail;
 	private Session session;
-
+	private String textpass;
 	/**
 	 * Launch the application.
 	 */
@@ -176,14 +176,16 @@ public class Inicio extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 		
 
+			
+
 			public void actionPerformed(ActionEvent arg0) {
 				//mail tiene que contener un mail de la base de datos
 				textmail = textField.getText();
-
+				textpass = passwordField.getText();
 		            Query query = session.createQuery("SELECT a FROM Alumnos a");
 		            List<Alumnos> alumnos = query.list();
 		            for (Alumnos alumno : alumnos) {
-		            	if(alumno.getEmail().equals(textmail)){
+		            	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
 		            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre());
 							alu.setVisible(true);
 							contentPane.setEnabled(false);

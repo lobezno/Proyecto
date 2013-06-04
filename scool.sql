@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-05-2013 a las 23:40:50
+-- Tiempo de generación: 04-06-2013 a las 23:09:46
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -43,6 +43,17 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
   KEY `centro` (`centro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `alumnos`
+--
+
+INSERT INTO `alumnos` (`idalumno`, `nombre`, `apellidos`, `dni`, `direccion`, `email`, `password`, `telefono`, `centro`, `curso`, `club`) VALUES
+(1, 'Antonio', 'Pardeza Gomez', '72154578F', 'Calle Pando nº 3 3ºF', 'anto@parde.com', '1234', 942851456, 1, '1A', 1),
+(2, 'Juan', 'De Dios', '721458935', 'Calle Las Rosas nº4 4ºJ', 'jdios@mail.com', '1234', 942584758, 2, '1B', 1),
+(3, 'Isabel', 'Fernandez Garcia', '72568545W', 'Calle Sierra nº3 9ºH', 'isa@mail.com', '1234', 618452365, 3, '2A', 2),
+(4, 'Beatriz', 'Lopez Ingunza', '72651534O', 'Calle Piruleta nº2 8ºA', 'bea@gmail.com', '1234', 685324592, 4, '1A', 3),
+(5, 'Sonia', 'Velez Estibez', '72451478U', 'Calle Carmona nº1 1ºA', 'soni@mail.com', '1234', 613256478, 1, '1A', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -51,11 +62,23 @@ CREATE TABLE IF NOT EXISTS `alumnos` (
 
 CREATE TABLE IF NOT EXISTS `centros` (
   `idcentro` int(11) NOT NULL,
-  `Nombre` int(11) NOT NULL,
-  `Localidad` int(11) NOT NULL,
-  `Provincia` int(11) NOT NULL,
+  `Nombre` varchar(20) NOT NULL,
+  `Localidad` varchar(20) NOT NULL,
+  `Provincia` varchar(20) NOT NULL,
   PRIMARY KEY (`idcentro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `centros`
+--
+
+INSERT INTO `centros` (`idcentro`, `Nombre`, `Localidad`, `Provincia`) VALUES
+(1, 'I.E.S. Miguel Herrer', 'Torrelavega', 'Cantabria'),
+(2, 'I.E.S Zapatón', 'Torrelavega', 'Cantabria'),
+(3, 'I.E.S. Augusto Garci', 'Santander', 'Cantabria'),
+(4, 'I.E.S. Barajas', 'Madrid', 'Madrid'),
+(5, 'Colegio Nuestra Seño', 'Torrelavega', 'Cantabria'),
+(6, 'Universidad de Ovied', 'Oviedo', 'Asturias');
 
 -- --------------------------------------------------------
 
@@ -124,7 +147,14 @@ CREATE TABLE IF NOT EXISTS `padres` (
   `hijo` int(11) NOT NULL,
   PRIMARY KEY (`idpadre`),
   KEY `hijo` (`hijo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `padres`
+--
+
+INSERT INTO `padres` (`idpadre`, `nombre`, `apellidos`, `dni`, `direccion`, `email`, `password`, `telefono`, `hijo`) VALUES
+(1, 'Juan Antonio', 'Pardeza Gutierrez', '72564815P', 'Calle Pando nº 3 3ºF', 'juanan@papi.com', '1234', 616856415, 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +179,14 @@ CREATE TABLE IF NOT EXISTS `profesores` (
   KEY `club` (`club`),
   KEY `materia` (`materia`),
   KEY `centro` (`centro`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla profesores' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Tabla profesores' AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `profesores`
+--
+
+INSERT INTO `profesores` (`idprofesor`, `nombre`, `apellidos`, `dni`, `direccion`, `email`, `password`, `telefono`, `centro`, `materia`, `padrino`, `club`) VALUES
+(1, 'Ramiro', 'Carballo Lopez', '72548312A', 'Calle Falsa nº123 1ºH', 'ramiro@profe.com', '1234', 914785623, 1, 1, 1, 1);
 
 --
 -- Restricciones para tablas volcadas

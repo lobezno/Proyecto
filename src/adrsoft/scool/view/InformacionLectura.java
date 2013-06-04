@@ -6,6 +6,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 
 public class InformacionLectura extends JInternalFrame {
 
@@ -14,7 +15,10 @@ public class InformacionLectura extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public InformacionLectura() {
+		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 300);
+		((javax.swing.plaf.basic.BasicInternalFrameUI) 
+				getUI()).setNorthPane(null);
 		
 		JButton btnNewButton = new JButton("New button");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
