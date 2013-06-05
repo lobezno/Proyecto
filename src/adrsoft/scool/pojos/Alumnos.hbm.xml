@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="adrsoft.scool.pojos.Alumnos">
+        <id column="idalumno" name="idalumno" type="integer"/>
+        <property name="nombre"  type="string"/>
+        <property name="apellidos" type="string"/>
+        <property name="dni" type="string"/>
+        <property name="direccion" type="string"/>
+        <property name="email" type="string"/>
+        <property name="password" type="string"/>
+        <property name="telefono" type="integer"/>
+        <property name="centro" type="integer"/>
+        <property name="curso" type="string"/>
+        <property name="club" type="integer"/>
+        
+
+    </class>
+        
+</hibernate-mapping>
