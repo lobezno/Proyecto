@@ -38,6 +38,7 @@ public class Club extends JInternalFrame {
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_5;
 	private JDesktopPane clubDesktopPane;
+	private int mClub;
 
 	/**
 	 * Launch the application.
@@ -47,10 +48,11 @@ public class Club extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Club() {
+	public Club(int clu) {
 		getContentPane().setBackground(new Color(153, 204, 255));
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 				getUI()).setNorthPane(null);
+		this.mClub = clu;
 		init();
 		createEvents();
 
@@ -62,7 +64,7 @@ public class Club extends JInternalFrame {
 	    //Boton Información
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Informacion info = new Informacion();
+				Informacion info = new Informacion(mClub);
 				info.setVisible(true);
 				clubDesktopPane.add(info);
 					try {
@@ -253,6 +255,7 @@ public class Club extends JInternalFrame {
 		getContentPane().setLayout(groupLayout);
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBounds(100, 100, 710, 523);
+		
 		
 	}
 }

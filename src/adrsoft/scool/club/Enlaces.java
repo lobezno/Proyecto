@@ -1,6 +1,5 @@
 package adrsoft.scool.club;
 
-import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
@@ -10,12 +9,19 @@ import javax.swing.JLabel;
 public class Enlaces extends JInternalFrame {
 
 
+    private static final long serialVersionUID = 1L;
+
 	/**
 	 * Create the frame.
 	 */
 	public Enlaces() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 710, 300);
 		
+		init();
+	}
+
+	private void init() {
+
 		JLabel lblEnlaces = new JLabel("Enlaces");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -34,6 +40,7 @@ public class Enlaces extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 
+	    
 	}
 
 }

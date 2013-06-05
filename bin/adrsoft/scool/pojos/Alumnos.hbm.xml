@@ -13,8 +13,5 @@
         <property name="centro" type="integer"/>
         <property name="curso" type="string"/>
         <property name="club" type="integer"/>
-        
-
     </class>
-        
 </hibernate-mapping>

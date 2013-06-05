@@ -1,8 +1,5 @@
 package adrsoft.scool.view;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
@@ -12,15 +9,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
 import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Component;
-
 
 public class Notas extends JInternalFrame {
-	
-	  private JPanel contentPane;
-	  private JScrollPane scrollPane;
+    	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JScrollPane scrollPane;
 
 
 

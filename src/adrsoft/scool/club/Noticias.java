@@ -1,6 +1,5 @@
 package adrsoft.scool.club;
 
-import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
@@ -9,13 +8,19 @@ import javax.swing.JLabel;
 
 public class Noticias extends JInternalFrame {
 
+    private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the frame.
 	 */
 	public Noticias() {
+	    init();
+	    }
+
+	private void init() {
+
+	    
 		setBounds(100, 100, 450, 300);
-		
 		JLabel lblNoticias = new JLabel("Noticias");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -34,6 +39,9 @@ public class Noticias extends JInternalFrame {
 		);
 		getContentPane().setLayout(groupLayout);
 
+	
+	    
 	}
 
 }
+

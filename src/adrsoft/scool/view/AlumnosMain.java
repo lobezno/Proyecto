@@ -1,18 +1,13 @@
 package adrsoft.scool.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import java.awt.Color;
-
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
@@ -23,22 +18,14 @@ import javax.swing.UIManager;
 import javax.swing.JToolBar;
 import javax.swing.JDesktopPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTree;
 import javax.swing.SwingConstants;
-
-import sun.rmi.runtime.Log;
-
 import adrsoft.scool.pojos.Alumnos;
-
 import com.toedter.calendar.JCalendar;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
 import java.util.List;
 import java.awt.Font;
-import javax.swing.JScrollBar;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,6 +37,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class AlumnosMain extends JFrame {
+
+	
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+	/**
+     * 
+     */
 
 	/*
 	 * Campos
@@ -69,7 +65,6 @@ public class AlumnosMain extends JFrame {
 	private JButton btnNewButton_4;
 	private JCalendar mCalendario;
 	private JDesktopPane mDesktopPane;
-	private JInternalFrame internalFrame;
 	private Perfil perfil;
 	private Mensajes mMensajes;
 	private Club mClub;
@@ -79,6 +74,7 @@ public class AlumnosMain extends JFrame {
 	private String apellidos;
 	private JLabel lblMouseOver;
 	private Notas mNotas;
+	private int mIdClub;
 
 
 	/**
@@ -91,11 +87,12 @@ public class AlumnosMain extends JFrame {
 		createConnection();
 	}
 	
-	public AlumnosMain(String mail, String nom, String ape) {
+	public AlumnosMain(String mail, String nom, String ape, int clu) {
 		setBackground(UIManager.getColor("activeCaption"));
 		this.email = mail;
 		this.nombre = nom;
 		this.apellidos = ape;
+		this.mIdClub = clu;
 		init();
 		createEvents();
 		createConnection();
@@ -292,7 +289,7 @@ public class AlumnosMain extends JFrame {
 
 	            System.out.println("----------- Uso de list() -----------");
 	            Query query = session.createQuery("SELECT a FROM Alumnos a WHERE a.email='"+email+"'");
-	            List<Alumnos> alumnos = query.list();
+		    List<Alumnos> alumnos = query.list();
 	            for (Alumnos alumno : alumnos) {
 	                perfil.setNombreText(alumno.getNombre());
 	                perfil.setApellidosText(alumno.getApellidos());
@@ -325,7 +322,7 @@ public class AlumnosMain extends JFrame {
 		//Boton de Club
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mClub = new Club();
+				mClub = new Club(mIdClub);
 				mClub.setVisible(true);
 				mClub.setBorder(null);
 				

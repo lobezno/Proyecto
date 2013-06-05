@@ -1,22 +1,16 @@
 package adrsoft.scool.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import java.awt.GridLayout;
 import javax.swing.UIManager;
-import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JLabel;
@@ -24,21 +18,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.util.List;
-
 import javax.swing.JPasswordField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-
 import adrsoft.scool.pojos.Alumnos;
 
 public class Inicio extends JFrame {
 
+
+    	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
 	private JButton btnNewButton;
@@ -48,6 +40,7 @@ public class Inicio extends JFrame {
 	private String textmail;
 	private Session session;
 	private String textpass;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -68,7 +61,7 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
-		setTitle("sCooL");
+		setTitle(" %&%%&% sCooL %&%%&% ");
 		createConnection();
 		init();
 		createEvents();
@@ -76,6 +69,8 @@ public class Inicio extends JFrame {
 	}
 	
 	private class SwingAction extends AbstractAction {
+
+	    private static final long serialVersionUID = 1L;
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
@@ -186,7 +181,7 @@ public class Inicio extends JFrame {
 		            List<Alumnos> alumnos = query.list();
 		            for (Alumnos alumno : alumnos) {
 		            
-		            				AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos());
+		            				AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub());
 							alu.setVisible(true);
 							contentPane.setEnabled(false);
 							contentPane.setVisible(false);	

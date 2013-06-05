@@ -1,23 +1,20 @@
 package adrsoft.scool.view;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics;
+
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
-import javax.swing.JTable;
 import java.awt.Color;
 
 public class Mensajes extends JInternalFrame {
-
+    	private static final long serialVersionUID = 1L;
+    	
 
 	/**
 	 * Create the frame.

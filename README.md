@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Proyecto sCooL
 ========
 
@@ -15,4 +14,4 @@ Proyecto
 ========
 
 Proyecto clase
->>>>>>> df081afa23f127c0e91a07c4f67d145c74491290
+

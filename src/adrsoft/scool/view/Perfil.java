@@ -1,12 +1,6 @@
 package adrsoft.scool.view;
 
-import java.awt.EventQueue;
-import java.awt.image.BufferedImage;
-import java.beans.PropertyVetoException;
-import java.io.File;
-import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,30 +8,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
-import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.ScrollPaneConstants;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
-
-import adrsoft.scool.pojos.Alumnos;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
-import java.awt.SystemColor;
+
 
 public class Perfil extends JInternalFrame {
+
+    	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -58,19 +43,9 @@ public class Perfil extends JInternalFrame {
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 				getUI()).setNorthPane(null);
 		init();
-//		conexion();
 		createEvents();
 	}
 
-	private void conexion() {
-		SessionFactory sessionFactory;
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		Session session=sessionFactory.openSession();
-
-	}
 
 	private void init(){
 		JScrollPane scrollPane = new JScrollPane();

@@ -1,7 +1,5 @@
 package adrsoft.scool.club;
 
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,13 +7,20 @@ import javax.swing.JLabel;
 
 public class Normas extends JInternalFrame {
 
+    	private static final long serialVersionUID = 1L;
+
 	/**
 	 * Create the frame.
 	 */
 	public Normas() {
 		setBounds(100, 100, 450, 300);
 		
-		JLabel lblNormas = new JLabel("Normas");
+		init();
+
+	}
+
+	private void init() {
+	    JLabel lblNormas = new JLabel("Normas");
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -32,7 +37,7 @@ public class Normas extends JInternalFrame {
 					.addContainerGap(180, Short.MAX_VALUE))
 		);
 		getContentPane().setLayout(groupLayout);
-
+	    
 	}
 
 }
