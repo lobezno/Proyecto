@@ -1,45 +1,56 @@
 package adrsoft.scool.view;
 
-<<<<<<< HEAD
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-=======
 
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-<<<<<<< HEAD
-import javax.swing.Icon;
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
-<<<<<<< HEAD
-import javax.swing.JTable;
 import java.awt.Color;
-
-public class Mensajes extends JInternalFrame {
-
-=======
-import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Mensajes extends JInternalFrame {
     	private static final long serialVersionUID = 1L;
+    	private JButton btnNewButton;
+    	private JButton btnContactarConTutor;
     	
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 	/**
 	 * Create the frame.
 	 */
 	public Mensajes() {
+		init();
+		createEvents();
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 				getUI()).setNorthPane(null);
+
+	
+	}
+
+
+	private void createEvents() {
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showConfirmDialog(null, "Función no implementada aún.\nEstará disponible en un corto periodo de tiempo.","Oops..",JOptionPane.DEFAULT_OPTION);
+			}
+		});
+		
+		btnContactarConTutor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showConfirmDialog(null, "Función no implementada aún.\nEstará disponible en un corto periodo de tiempo.","Oops..",JOptionPane.DEFAULT_OPTION);
+			}
+		});
+		
+	}
+
+
+	private void init() {
 		setBackground(UIManager.getColor("textHighlight"));
 		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 410);
@@ -101,9 +112,10 @@ public class Mensajes extends JInternalFrame {
 		panel_2.setBackground(new Color(153, 204, 255));
 		tabbedPane.addTab("", null, panel_2, null);
 		
-		JButton btnNewButton = new JButton("Enviar Mensaje");
-		
-		JButton btnContactarConTutor = new JButton("Contactar con Tutor");
+		btnNewButton = new JButton("Enviar Mensaje");
+
+		btnContactarConTutor = new JButton("Contactar con Tutor");
+	
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -129,6 +141,6 @@ public class Mensajes extends JInternalFrame {
 
 		getContentPane().setLayout(groupLayout);
 
-	
+		
 	}
 }

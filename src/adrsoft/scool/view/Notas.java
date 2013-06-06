@@ -1,13 +1,8 @@
 package adrsoft.scool.view;
 import java.awt.BorderLayout;
-<<<<<<< HEAD
-import java.awt.Dimension;
-import java.awt.EventQueue;
-
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.GroupLayout.Alignment;
@@ -15,23 +10,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
 import java.awt.Color;
-<<<<<<< HEAD
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.Component;
-
-
-public class Notas extends JInternalFrame {
-	
-	  private JPanel contentPane;
-	  private JScrollPane scrollPane;
-=======
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class Notas extends JInternalFrame {
     	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
+	private JButton btnContacta;
+	private JTable table;
 
 
 
@@ -61,6 +52,41 @@ public class Notas extends JInternalFrame {
 	}
 
 	private void createEvents() {
+		btnContacta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showConfirmDialog(null, "Función no implementada aún.\nEstará disponible en un corto periodo de tiempo.","Oops..",JOptionPane.DEFAULT_OPTION);
+
+			}
+		});
+		
+		//Click en row
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				int row = table.getSelectedRow();
+				btnContacta.setEnabled(true);
+				switch(row){
+				case 0:
+					btnContacta.setText("Contacta con el profesor de Matemáticas");
+					break;
+				case 1:
+					btnContacta.setText("Contacta con el profesor de Lenguaje");
+					break;
+				case 2:
+					btnContacta.setText("Contacta con el profesor de Física");
+					break;
+				case 3:
+					btnContacta.setText("Contacta con el profesor de Educación Física");
+					break;
+				case 4:
+					btnContacta.setText("Contacta con el profesor de Dibujo");
+					break;
+				case 5:
+					btnContacta.setText("Contacta con el tutor");
+					break;
+				}
+			}
+		});
 	
 		
 	}
@@ -78,22 +104,19 @@ public class Notas extends JInternalFrame {
 				{"Lenguaje", new Float(8), new Float(8.3) },
 				{"Física", new Float(7), new Float(6.2)},
 				{"Educación Física", new Float(7), new Float(6.2)},
-				{"Tutoría", new String("Presentado"), new String("Presentado")},
+				{"Dibujo", new Float(6.2), new Float(7)},
 				};
 				String[] columnNames = {"Materia","1ª Evaluación","2ª Evaluación",};
 				 DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
 				// Agregar nueva columna
-<<<<<<< HEAD
-				String[] columnaNueva1= {"4","2","7.3",};
-=======
-				String[] columnaNueva1= {"4","2","7.3","6.25",};
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
+				String[] columnaNueva1= {"4","2","7.3","6.25","10"};
 				dtm.addColumn("3º Evaluación",columnaNueva1);
 				// Agregar nueva fila
-				Object[] newRow={"Dibujo",new Integer(55),new Float(3)};
+				Object[] newRow={"Tutoría", new String("Presentado"), new String("Presentado"), new String("No Presentado")};
 				dtm.addRow(newRow);
 				// Modificar celda especifica
 				dtm.setValueAt("5", 3, 3); // Row/Col
+				
 				
 			
 				
@@ -101,11 +124,18 @@ public class Notas extends JInternalFrame {
 				JPanel panel = new JPanel();
 				panel.setBackground(new Color(153, 204, 255));
 				contentPane.add(panel, BorderLayout.NORTH);
-				final JTable table = new JTable(dtm);
+				table = new JTable(dtm);
+			
 //				table.setPreferredScrollableViewportSize(new Dimension(250, 100));
 				scrollPane = new JScrollPane(table);
 				panel.add(scrollPane);
 				scrollPane.setBackground(new Color(153, 204, 255));
+				
+				btnContacta = new JButton("Selecciona una materia");
+				btnContacta.setEnabled(false);
+				btnContacta.setFont(new Font("Tahoma", Font.BOLD, 11));
+			
+				contentPane.add(btnContacta, BorderLayout.SOUTH);
 			
 				 
 	}

@@ -1,27 +1,13 @@
 package adrsoft.scool.view;
 
-<<<<<<< HEAD
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-<<<<<<< HEAD
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import java.awt.Color;
-
-import javax.swing.JInternalFrame;
-=======
-import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import java.awt.Color;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
@@ -32,31 +18,14 @@ import javax.swing.UIManager;
 import javax.swing.JToolBar;
 import javax.swing.JDesktopPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
-<<<<<<< HEAD
-import javax.swing.JTree;
-import javax.swing.SwingConstants;
-
-import sun.rmi.runtime.Log;
-
-import adrsoft.scool.pojos.Alumnos;
-
-import com.toedter.calendar.JCalendar;
-
-=======
 import javax.swing.SwingConstants;
 import adrsoft.scool.pojos.Alumnos;
 import com.toedter.calendar.JCalendar;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
 import java.util.List;
 import java.awt.Font;
-<<<<<<< HEAD
-import javax.swing.JScrollBar;
-
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -66,11 +35,18 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import java.awt.GridLayout;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JScrollPane;
 
 public class AlumnosMain extends JFrame {
 
-<<<<<<< HEAD
-=======
 	
 	/**
      * 
@@ -80,7 +56,6 @@ public class AlumnosMain extends JFrame {
      * 
      */
 
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	/*
 	 * Campos
 	 */
@@ -92,36 +67,33 @@ public class AlumnosMain extends JFrame {
 	private JMenuItem mntmLight;
 	private JMenuItem mntmLogin;
 	private JMenuItem mntmSalir;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
-	private JButton btnNewButton_4;
+	private JButton btnPerfil;
+	private JButton btnMensajes;
+	private JButton btnNotas;
+	private JButton btnWebs;
+	private JButton btnClub;
 	private JCalendar mCalendario;
 	private JDesktopPane mDesktopPane;
-<<<<<<< HEAD
-	private JInternalFrame internalFrame;
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	private Perfil perfil;
 	private Mensajes mMensajes;
 	private Club mClub;
 	private Session session;
 	private String email;
+	private int idalumno;
 	private String nombre;
-<<<<<<< HEAD
-	private JLabel lblMouseOver;
-	private Notas mNotas;
-
-	/**
-	 * Launch the application.
-	 */
-=======
 	private String apellidos;
 	private JLabel lblMouseOver;
 	private Notas mNotas;
 	private int mIdClub;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
+	private JToolBar toolBar;
+	private String tema = "classic";
+	private JButton btnMaxMin;
+	private boolean maximizada;
+	private JButton button;
+	private JPanel panelChat;
+	private JTextField textField;
+	private JButton btnChatEnviar;
+	private JTextField chatArea;
 
 
 	/**
@@ -134,35 +106,24 @@ public class AlumnosMain extends JFrame {
 		createConnection();
 	}
 	
-<<<<<<< HEAD
-	public AlumnosMain(String mail, String nom) {
+	public AlumnosMain(String mail, String nom, String ape, int clu, int idalu) {
 		setBackground(UIManager.getColor("activeCaption"));
 		this.email = mail;
-		this.nombre = nom;
-=======
-	public AlumnosMain(String mail, String nom, String ape, int clu) {
-		setBackground(UIManager.getColor("activeCaption"));
-		this.email = mail;
+		this.idalumno = idalu;
 		this.nombre = nom;
 		this.apellidos = ape;
 		this.mIdClub = clu;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
+		System.out.print("Alumnosmain Club: " + mIdClub);
 		init();
 		createEvents();
 		createConnection();
 		
 	}
 	
-<<<<<<< HEAD
-	private void createConnection() {
-	     	
-			SessionFactory sessionFactory;
-=======
 	
 	private void createConnection() {
 	     	
 		SessionFactory sessionFactory;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	        Configuration configuration = new Configuration();
 	        configuration.configure();
 	        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
@@ -173,14 +134,10 @@ public class AlumnosMain extends JFrame {
 
 	private void init() {
 
-<<<<<<< HEAD
-		setTitle("Bienvenido, " + nombre);
-=======
 		setTitle("Bienvenido, " + nombre + " " + apellidos);
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1069, 600);
+		setBounds(100, 100, 1069, 800);
 		mCalendario = new JCalendar();
 		
 		
@@ -206,10 +163,12 @@ public class AlumnosMain extends JFrame {
 		menuBar.add(mnTema);
 		
 		mntmClassic = new JMenuItem("Classic");
+
 		mntmClassic.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/50_percent_off.png")));
 		mnTema.add(mntmClassic);
 		
 		mntmDark = new JMenuItem("Dark");
+
 		mntmDark.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/50_percent_off.png")));
 		mnTema.add(mntmDark);
 		
@@ -233,7 +192,7 @@ public class AlumnosMain extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JToolBar toolBar = new JToolBar();
+		toolBar = new JToolBar();
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBar.setFloatable(false);
 		toolBar.setBackground(UIManager.getColor("textHighlight"));
@@ -242,6 +201,7 @@ public class AlumnosMain extends JFrame {
 		mDesktopPane.setBackground(new Color(153, 204, 255));
 		contentPane.add(mDesktopPane);
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(153, 204, 255));
 		panel.add(mCalendario);
 		
 		lblMouseOver = new JLabel("");
@@ -250,18 +210,37 @@ public class AlumnosMain extends JFrame {
 		lblMouseOver.setFont(new Font("Verdana", Font.BOLD, 20));
 		lblMouseOver.setFocusable(false);
 		
+		btnMaxMin = new JButton("");
+		btnMaxMin.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		btnMaxMin.setContentAreaFilled(false);
+		btnMaxMin.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/max.png")));
+		
+		button = new JButton("");
+		button.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/salirMid.png")));
+		button.setContentAreaFilled(false);
+		button.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		
+		panelChat = new JPanel();
+		panelChat.setBackground(new Color(153, 204, 255));
+	
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(lblMouseOver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
 						.addComponent(mDesktopPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 707, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(panelChat, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 204, Short.MAX_VALUE)
+						.addComponent(button, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -271,45 +250,88 @@ public class AlumnosMain extends JFrame {
 					.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+							.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+							.addGap(55)
+							.addComponent(panelChat, GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
+						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
-		btnNewButton = new JButton("");
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		btnChatEnviar = new JButton("Enviar");
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GroupLayout gl_panelChat = new GroupLayout(panelChat);
+		gl_panelChat.setHorizontalGroup(
+			gl_panelChat.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panelChat.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+					.addGap(38))
+				.addGroup(gl_panelChat.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+		);
+		gl_panelChat.setVerticalGroup(
+			gl_panelChat.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelChat.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panelChat.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+						.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		
+		chatArea = new JTextField();
+		scrollPane.setViewportView(chatArea);
+		chatArea.setColumns(10);
+		panelChat.setLayout(gl_panelChat);
+		
+		btnPerfil = new JButton("");
 	
-		btnNewButton.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton.setToolTipText("Perfil");
-		btnNewButton.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/male_user_info.png")));
-		toolBar.add(btnNewButton);
+		btnPerfil.setBackground(UIManager.getColor("textHighlight"));
+		btnPerfil.setToolTipText("Perfil");
+		btnPerfil.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/male_user_info.png")));
+		toolBar.add(btnPerfil);
 		
-		btnNewButton_1 = new JButton("");
+		btnMensajes = new JButton("");
 	
 		
-		btnNewButton_1.setToolTipText("Mensajeria");
-		btnNewButton_1.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_1.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/yellow_mail.png")));
-		toolBar.add(btnNewButton_1);
+		btnMensajes.setToolTipText("Mensajeria");
+		btnMensajes.setBackground(UIManager.getColor("textHighlight"));
+		btnMensajes.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/yellow_mail.png")));
+		toolBar.add(btnMensajes);
 		
-		btnNewButton_2 = new JButton("");
+		btnNotas = new JButton("");
 
-		btnNewButton_2.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_2.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/tablet.png")));
-		toolBar.add(btnNewButton_2);
+		btnNotas.setBackground(UIManager.getColor("textHighlight"));
+		btnNotas.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/tablet.png")));
+		toolBar.add(btnNotas);
 		
-		btnNewButton_3 = new JButton("");
+		btnWebs = new JButton("");
 		
-		btnNewButton_3.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_3.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/office_folders.png")));
-		toolBar.add(btnNewButton_3);
+		btnWebs.setBackground(UIManager.getColor("textHighlight"));
+		btnWebs.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/office_folders.png")));
+		toolBar.add(btnWebs);
 		
-		btnNewButton_4 = new JButton("");
+		btnClub = new JButton("");
 
 	
-		btnNewButton_4.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_4.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/package.png")));
-		toolBar.add(btnNewButton_4);
+		btnClub.setBackground(UIManager.getColor("textHighlight"));
+		btnClub.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/package.png")));
+		toolBar.add(btnClub);
 		contentPane.setLayout(gl_contentPane);
 	
 		
@@ -332,9 +354,9 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Botón de Perfil
-		btnNewButton.addActionListener(new ActionListener() {
+		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			perfil = new Perfil();
+			perfil = new Perfil(idalumno,tema);
 			perfil.setVisible(true);
 		
 			mDesktopPane.add(perfil);
@@ -353,11 +375,7 @@ public class AlumnosMain extends JFrame {
 
 	            System.out.println("----------- Uso de list() -----------");
 	            Query query = session.createQuery("SELECT a FROM Alumnos a WHERE a.email='"+email+"'");
-<<<<<<< HEAD
-	            List<Alumnos> alumnos = query.list();
-=======
 		    List<Alumnos> alumnos = query.list();
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	            for (Alumnos alumno : alumnos) {
 	                perfil.setNombreText(alumno.getNombre());
 	                perfil.setApellidosText(alumno.getApellidos());
@@ -371,7 +389,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Boton de Mensajes
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnMensajes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mMensajes = new Mensajes();
 				mMensajes.setVisible(true);
@@ -388,13 +406,9 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Boton de Club
-		btnNewButton_4.addActionListener(new ActionListener() {
+		btnClub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-				mClub = new Club();
-=======
 				mClub = new Club(mIdClub);
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 				mClub.setVisible(true);
 				mClub.setBorder(null);
 				
@@ -410,7 +424,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//boton de notas
-		btnNewButton_2.addActionListener(new ActionListener() {
+		btnNotas.addActionListener(new ActionListener() {
 			
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -440,7 +454,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Boton de webs
-		btnNewButton_3.addActionListener(new ActionListener() {
+		btnWebs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 //	            System.out.println("----------- Uso de list() -----------");
@@ -465,7 +479,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Mouseover Perfil
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		btnPerfil.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				lblMouseOver.setText("Perfil");
@@ -477,7 +491,7 @@ public class AlumnosMain extends JFrame {
 			}
 		});
 		
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		btnMensajes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
@@ -491,7 +505,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Mouseover Notas
-		btnNewButton_2.addMouseListener(new MouseAdapter() {
+		btnNotas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lblMouseOver.setText("Notas");
@@ -503,7 +517,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Mouseover Club
-		btnNewButton_4.addMouseListener(new MouseAdapter() {
+		btnClub.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				lblMouseOver.setText("Club");
@@ -515,7 +529,7 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//mouseover webs
-		btnNewButton_3.addMouseListener(new MouseAdapter() {
+		btnWebs.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				lblMouseOver.setText("Web / Intranet");
@@ -526,5 +540,73 @@ public class AlumnosMain extends JFrame {
 			}
 		});
 		
+		//Tema oscuro
+	
+		mntmDark.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tema = "oscuro";
+				mDesktopPane.setBackground(Color.GRAY);
+				contentPane.setBackground(Color.BLACK);
+				toolBar.setBackground(Color.GRAY);
+				btnPerfil.setBackground(Color.GRAY);
+				btnMensajes.setBackground(Color.GRAY);
+				btnNotas.setBackground(Color.GRAY);
+				btnWebs.setBackground(Color.GRAY);
+				btnClub.setBackground(Color.GRAY);
+			}
+		});
+		
+		//Tema classico
+		mntmClassic.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tema = "classic";	
+				mDesktopPane.setBackground(new Color(153, 204, 255));
+				contentPane.setBackground(UIManager.getColor("textHighlight"));
+				toolBar.setBackground(UIManager.getColor("textHighlight"));
+				btnPerfil.setBackground(UIManager.getColor("textHighlight"));
+				btnMensajes.setBackground(UIManager.getColor("textHighlight"));
+				btnNotas.setBackground(UIManager.getColor("textHighlight"));
+				btnWebs.setBackground(UIManager.getColor("textHighlight"));
+				btnClub.setBackground(UIManager.getColor("textHighlight"));
+			}
+		});
+		
+		//Tema claro
+		
+		mntmLight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tema = "claro";
+			}
+		});
+		
+		//Botón Expand/Collapse
+		btnMaxMin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(maximizada){
+					setBounds(100, 100, 1069, 800);
+					maximizada = false;
+					btnMaxMin.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/max.png")));
+				}
+				else{
+					setExtendedState(JFrame.MAXIMIZED_BOTH);
+					maximizada = true;
+					btnMaxMin.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/min.png")));
+				}
+				
+			}
+		});
+		
+		//Botón cerrar inferior derecho
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		btnChatEnviar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				chatArea.setText("hola!");
+			}
+		});
 	}
 }

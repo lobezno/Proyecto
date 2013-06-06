@@ -1,33 +1,16 @@
 package adrsoft.scool.view;
 
-<<<<<<< HEAD
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-=======
-import java.awt.EventQueue;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-<<<<<<< HEAD
-import java.awt.GridLayout;
-import javax.swing.UIManager;
-import java.awt.Frame;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.AbstractAction;
-import javax.swing.JOptionPane;
-
-=======
 import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JLabel;
@@ -35,46 +18,32 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.util.List;
-<<<<<<< HEAD
-
 import javax.swing.JPasswordField;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-=======
-import javax.swing.JPasswordField;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import adrsoft.scool.pojos.Alumnos;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Inicio extends JFrame {
 
-<<<<<<< HEAD
-=======
 
     	private static final long serialVersionUID = 1L;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
-	private JButton btnNewButton;
+	private JButton btnSalir;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private JButton btnNewButton_1;
+	private JButton btnGo;
 	private String textmail;
 	private Session session;
 	private String textpass;
-<<<<<<< HEAD
-=======
 	
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	/**
 	 * Launch the application.
 	 */
@@ -95,11 +64,8 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
-<<<<<<< HEAD
-		setTitle("sCooL");
-=======
+		setLocationRelativeTo(null);
 		setTitle(" %&%%&% sCooL %&%%&% ");
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		createConnection();
 		init();
 		createEvents();
@@ -107,11 +73,8 @@ public class Inicio extends JFrame {
 	}
 	
 	private class SwingAction extends AbstractAction {
-<<<<<<< HEAD
-=======
 
 	    private static final long serialVersionUID = 1L;
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
@@ -124,37 +87,43 @@ public class Inicio extends JFrame {
 	 * Inicializador
 	 */
 	private void init(){
-
 		setUndecorated(true);
 		setForeground(new Color(0, 0, 51));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
+
 		contentPane.setBackground(UIManager.getColor("textHighlight"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		btnNewButton = new JButton("");
+		btnSalir = new JButton("");
+		btnSalir.setBorder(null);
+		btnSalir.setContentAreaFilled(false);
 		
-		btnNewButton.setToolTipText("Salir");
-		btnNewButton.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
+		btnSalir.setToolTipText("Salir");
+		btnSalir.setBackground(UIManager.getColor("textHighlight"));
+		btnSalir.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/exit.gif")));
 		
 		JLabel lblUsuario = new JLabel("Email");
 		lblUsuario.setFont(new Font("Verdana", Font.BOLD, 18));
 		
 		textField = new JTextField();
+	
 		textField.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setFont(new Font("Verdana", Font.BOLD, 18));
 		
 		passwordField = new JPasswordField();
-		btnNewButton_1 = new JButton("");
-		btnNewButton_1.setBackground(UIManager.getColor("textHighlight"));
-		btnNewButton_1.setToolTipText("Entar");
-		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/accept.png")));
+	
+		btnGo = new JButton("");
+		btnGo.setBorder(null);
+		btnGo.setContentAreaFilled(false);
+		btnGo.setBackground(null);
+		btnGo.setToolTipText("Entar");
+		btnGo.setIcon(new ImageIcon(Inicio.class.getResource("/adrsoft/scool/resources/images/high/accept.png")));
 	
 	
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -162,12 +131,12 @@ public class Inicio extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(633, Short.MAX_VALUE)
-					.addComponent(btnNewButton))
+					.addComponent(btnSalir))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnNewButton_1))
+							.addComponent(btnGo))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(225)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -182,7 +151,7 @@ public class Inicio extends JFrame {
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(266, Short.MAX_VALUE)
+					.addContainerGap(216, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblUsuario))
@@ -191,9 +160,9 @@ public class Inicio extends JFrame {
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblContrasea))
 					.addGap(18)
-					.addComponent(btnNewButton_1)
+					.addComponent(btnGo)
 					.addGap(74)
-					.addComponent(btnNewButton))
+					.addComponent(btnSalir))
 		);
 		contentPane.setLayout(gl_contentPane);
 	
@@ -203,50 +172,68 @@ public class Inicio extends JFrame {
 	 * Creador de eventos
 	 */
 	private void createEvents(){
-		btnNewButton.addActionListener(new ActionListener() {
+		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
 		
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnGo.addActionListener(new ActionListener() {
 		
 
 			
 
 			public void actionPerformed(ActionEvent arg0) {
-				//mail tiene que contener un mail de la base de datos
-				textmail = textField.getText();
-				textpass = passwordField.getText();
-		            Query query = session.createQuery("SELECT a FROM Alumnos a");
-		            List<Alumnos> alumnos = query.list();
-		            for (Alumnos alumno : alumnos) {
-<<<<<<< HEAD
-		            	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
-		            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre());
-=======
-		            
-		            				AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub());
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
-							alu.setVisible(true);
-							contentPane.setEnabled(false);
-							contentPane.setVisible(false);	
-						
-<<<<<<< HEAD
-		            	}
-=======
-		            	
->>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
-		            }
-
+				check();
 			}
 		});
 		
-	
+		//Pulsación de enter
+
+
+		
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+	            {
+	               check();
+	            }
+			}
+		});
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER)
+	            {
+	               check();
+	            }
+			}
+		});
 		
 		
 	}
 	
+	protected void check() {
+		//mail tiene que contener un mail de la base de datos
+		textmail = textField.getText();
+		textpass = passwordField.getText();
+            Query query = session.createQuery("SELECT a FROM Alumnos a");
+            List<Alumnos> alumnos = query.list();
+            for (Alumnos alumno : alumnos) {
+            	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
+            		int averseseclub = alumno.getClub();
+            		System.out.println("ÑAAAAAAAAAAAAAAAAAAAAAAA" + averseseclub);
+            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub(), alumno.getIdalumno());
+					alu.setVisible(true);
+					contentPane.setEnabled(false);
+					contentPane.setVisible(false);
+            	}
+            }
+
+		
+	}
+
 	private void createConnection() {
      	
 		SessionFactory sessionFactory;
