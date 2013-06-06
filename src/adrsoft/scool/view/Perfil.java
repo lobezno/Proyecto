@@ -1,5 +1,6 @@
 package adrsoft.scool.view;
 
+<<<<<<< HEAD
 import java.awt.EventQueue;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyVetoException;
@@ -7,6 +8,9 @@ import java.io.File;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+=======
+
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -14,14 +18,19 @@ import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.JButton;
+<<<<<<< HEAD
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+=======
+import javax.swing.JLabel;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.ScrollPaneConstants;
+<<<<<<< HEAD
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -31,13 +40,23 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import adrsoft.scool.pojos.Alumnos;
+=======
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+<<<<<<< HEAD
 import java.awt.SystemColor;
 
 public class Perfil extends JInternalFrame {
+=======
+
+
+public class Perfil extends JInternalFrame {
+
+    	private static final long serialVersionUID = 1L;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -58,6 +77,7 @@ public class Perfil extends JInternalFrame {
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 				getUI()).setNorthPane(null);
 		init();
+<<<<<<< HEAD
 //		conexion();
 		createEvents();
 	}
@@ -71,6 +91,11 @@ public class Perfil extends JInternalFrame {
 		Session session=sessionFactory.openSession();
 
 	}
+=======
+		createEvents();
+	}
+
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 	private void init(){
 		JScrollPane scrollPane = new JScrollPane();

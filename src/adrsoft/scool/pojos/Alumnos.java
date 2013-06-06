@@ -3,7 +3,12 @@ package adrsoft.scool.pojos;
 import java.io.Serializable;
 
 public class Alumnos implements Serializable{
+<<<<<<< HEAD
 	
+=======
+   
+    	private static final long serialVersionUID = 1L;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	private int idalumno;
 	private String nombre;
 	private String apellidos;
@@ -16,6 +21,10 @@ public class Alumnos implements Serializable{
 	private String curso;
 	private int club;
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	public Alumnos(){
 		
 	}

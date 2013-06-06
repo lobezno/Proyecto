@@ -1,8 +1,11 @@
 package adrsoft.scool.view;
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
+=======
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.JScrollPane;
@@ -12,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
 import java.awt.Color;
+<<<<<<< HEAD
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Component;
@@ -21,6 +25,13 @@ public class Notas extends JInternalFrame {
 	
 	  private JPanel contentPane;
 	  private JScrollPane scrollPane;
+=======
+
+public class Notas extends JInternalFrame {
+    	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JScrollPane scrollPane;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 
 
@@ -72,7 +83,11 @@ public class Notas extends JInternalFrame {
 				String[] columnNames = {"Materia","1ª Evaluación","2ª Evaluación",};
 				 DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
 				// Agregar nueva columna
+<<<<<<< HEAD
 				String[] columnaNueva1= {"4","2","7.3",};
+=======
+				String[] columnaNueva1= {"4","2","7.3","6.25",};
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 				dtm.addColumn("3º Evaluación",columnaNueva1);
 				// Agregar nueva fila
 				Object[] newRow={"Dibujo",new Integer(55),new Float(3)};

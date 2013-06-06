@@ -1,14 +1,19 @@
 package adrsoft.scool.view;
 
+<<<<<<< HEAD
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+=======
+import java.awt.EventQueue;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+<<<<<<< HEAD
 import java.awt.GridLayout;
 import javax.swing.UIManager;
 import java.awt.Frame;
@@ -17,6 +22,12 @@ import javax.swing.ImageIcon;
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 
+=======
+import javax.swing.UIManager;
+import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.AbstractAction;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JLabel;
@@ -24,21 +35,33 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import java.awt.Font;
 import java.util.List;
+<<<<<<< HEAD
 
 import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+=======
+import javax.swing.JPasswordField;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import adrsoft.scool.pojos.Alumnos;
 
 public class Inicio extends JFrame {
 
+<<<<<<< HEAD
+=======
+
+    	private static final long serialVersionUID = 1L;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
 	private JButton btnNewButton;
@@ -48,6 +71,10 @@ public class Inicio extends JFrame {
 	private String textmail;
 	private Session session;
 	private String textpass;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 	/**
 	 * Launch the application.
 	 */
@@ -68,7 +95,11 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
+<<<<<<< HEAD
 		setTitle("sCooL");
+=======
+		setTitle(" %&%%&% sCooL %&%%&% ");
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		createConnection();
 		init();
 		createEvents();
@@ -76,6 +107,11 @@ public class Inicio extends JFrame {
 	}
 	
 	private class SwingAction extends AbstractAction {
+<<<<<<< HEAD
+=======
+
+	    private static final long serialVersionUID = 1L;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
 			putValue(SHORT_DESCRIPTION, "Some short description");
@@ -185,13 +221,22 @@ public class Inicio extends JFrame {
 		            Query query = session.createQuery("SELECT a FROM Alumnos a");
 		            List<Alumnos> alumnos = query.list();
 		            for (Alumnos alumno : alumnos) {
+<<<<<<< HEAD
 		            	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
 		            		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre());
+=======
+		            
+		            				AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub());
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 							alu.setVisible(true);
 							contentPane.setEnabled(false);
 							contentPane.setVisible(false);	
 						
+<<<<<<< HEAD
 		            	}
+=======
+		            	
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 		            }
 
 			}

@@ -1,6 +1,7 @@
 package adrsoft.scool.view;
 
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
@@ -8,23 +9,39 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+=======
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.JButton;
+<<<<<<< HEAD
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
+=======
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
 public class Webs extends JInternalFrame {
 
+<<<<<<< HEAD
     private JEditorPane editorPane;
+=======
+    private static final long serialVersionUID = 1L;
+    private JEditorPane editorPane;
+    @SuppressWarnings("unused")
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
     private JScrollPane scrollPane;
     private String ruta =  "http://www.iesmiguelherrero.com/";
     private JButton mWeb;

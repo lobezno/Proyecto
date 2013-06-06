@@ -1,23 +1,38 @@
 package adrsoft.scool.view;
 
+<<<<<<< HEAD
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+=======
+
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+<<<<<<< HEAD
 import javax.swing.Icon;
+=======
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+<<<<<<< HEAD
 import javax.swing.JTable;
 import java.awt.Color;
 
 public class Mensajes extends JInternalFrame {
 
+=======
+import java.awt.Color;
+
+public class Mensajes extends JInternalFrame {
+    	private static final long serialVersionUID = 1L;
+    	
+>>>>>>> 8c373a3df131013fcf04fc1d20e0fe1764e902a6
 
 	/**
 	 * Create the frame.
