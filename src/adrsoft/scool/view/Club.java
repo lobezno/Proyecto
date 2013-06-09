@@ -25,11 +25,25 @@ import adrsoft.scool.club.Inventario;
 import adrsoft.scool.club.Miembros;
 import adrsoft.scool.club.Normas;
 import adrsoft.scool.club.Noticias;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 
 
-
+/**
+ * Clase que recoge el club del alumno y renderiza un portal donde puede interactuar con las caracteristicas
+ * del club, así como con sus miembros.
+ * 
+ * @author adrSoft
+ *@version 1.0
+ */
 public class Club extends JInternalFrame {
+
+    	/*
+    	 * Campos
+    	 */
+    	private static final long serialVersionUID = 1L;
 	private JButton btnNewButton;
 	private JButton btnNewButton_6;
 	private JButton btnNewButton_1;
@@ -39,14 +53,15 @@ public class Club extends JInternalFrame {
 	private JButton btnNewButton_5;
 	private JDesktopPane clubDesktopPane;
 	private int mClub;
+	private JLabel lblNewLabel;
+
+
 
 	/**
-	 * Launch the application.
-	 */
-
-
-	/**
-	 * Create the frame.
+	 *Constructor que inicializa la clase habiendole pasado el id del club a mostrar.
+	 *@author adrSoft
+	 *@version 1.0
+	 *@param clu = idclub(identificador del club del alumno)
 	 */
 	public Club(int clu) {
 		getContentPane().setBackground(new Color(153, 204, 255));
@@ -55,13 +70,18 @@ public class Club extends JInternalFrame {
 		this.mClub = clu;
 		init();
 		createEvents();
-		System.out.print("Club/ club:" +mClub);
 
 	}
 
+	
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents() {
 	    
-	    //Boton Información
+	    	//Boton Información
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Informacion info = new Informacion(mClub);
@@ -96,7 +116,7 @@ public class Club extends JInternalFrame {
 		//Botón noticias
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Noticias notis = new Noticias();
+			    Noticias notis = new Noticias(mClub);
 			    notis.setVisible(true);
 			    clubDesktopPane.add(notis);
 			    try {
@@ -126,7 +146,7 @@ public class Club extends JInternalFrame {
 		//Botón inventario
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Inventario inven = new Inventario();
+			    Inventario inven = new Inventario(mClub);
 			    inven.setVisible(true);
 			    clubDesktopPane.add(inven);
 			    try {
@@ -141,7 +161,7 @@ public class Club extends JInternalFrame {
 		//Botón fotos
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Fotos fots = new Fotos();
+			    Fotos fots = new Fotos(mClub);
 			    fots.setVisible(true);
 			    clubDesktopPane.add(fots);
 			    try {
@@ -156,7 +176,7 @@ public class Club extends JInternalFrame {
 		//Botón enlaces
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Enlaces enla = new Enlaces();
+			    Enlaces enla = new Enlaces(mClub);
 			    enla.setVisible(true);
 			    clubDesktopPane.add(enla);
 			    try {
@@ -171,6 +191,11 @@ public class Club extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(153, 204, 255));
@@ -191,14 +216,40 @@ public class Club extends JInternalFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(clubDesktopPane, GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
 		);
+		
+		lblNewLabel = new JLabel("");
+
+	
+		switch(mClub){
+		case 1:
+			lblNewLabel.setIcon(new ImageIcon(Club.class.getResource("/adrsoft/scool/resources/images/high/peon.gif")));
+			break;
+		case 2:
+			lblNewLabel.setIcon(new ImageIcon(Club.class.getResource("/adrsoft/scool/resources/images/high/atletismo.gif")));
+			break;
+		case 3:
+			lblNewLabel.setIcon(new ImageIcon(Club.class.getResource("/adrsoft/scool/resources/images/high/mando.gif")));
+			break;
+		case 4:
+			lblNewLabel.setIcon(new ImageIcon(Club.class.getResource("/adrsoft/scool/resources/images/high/libro.gif")));
+			break;
+		}
+		
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		GroupLayout gl_clubDesktopPane = new GroupLayout(clubDesktopPane);
 		gl_clubDesktopPane.setHorizontalGroup(
 			gl_clubDesktopPane.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 708, Short.MAX_VALUE)
+				.addGroup(gl_clubDesktopPane.createSequentialGroup()
+					.addGap(149)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 412, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(147, Short.MAX_VALUE))
 		);
 		gl_clubDesktopPane.setVerticalGroup(
 			gl_clubDesktopPane.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 439, Short.MAX_VALUE)
+				.addGroup(gl_clubDesktopPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		clubDesktopPane.setLayout(gl_clubDesktopPane);
 		

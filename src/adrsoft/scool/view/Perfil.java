@@ -38,7 +38,10 @@ import java.awt.GridLayout;
 
 
 public class Perfil extends JInternalFrame {
-
+    	
+    	/*
+    	 * Campos
+    	 */
     	private static final long serialVersionUID = 1L;
 	private JTextField cajaNombre;
 	private JTextField cajaDireccion;
@@ -60,7 +63,9 @@ public class Perfil extends JInternalFrame {
 	private JButton btnCancelar;
 	
 	/**
-	 * Create the frame.
+	 * Constructor de la clase. Se encarga de inicializar los argumentos y los demás componentes del frame.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Perfil(int id, String tem) {
 		setBackground(UIManager.getColor("activeCaption"));
@@ -69,30 +74,39 @@ public class Perfil extends JInternalFrame {
 //		setBounds(100, 100, 710, 622);
 		this.idalumno = id;
 		this.tema = tem;
-		((javax.swing.plaf.basic.BasicInternalFrameUI) 
-				getUI()).setNorthPane(null);
+		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
 		init();
 		pintarTema(tema);
 		createEvents();
 	}
 
 
-	private void pintarTema(String tema2) {
-		if(tema2.equals("classic")){
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
 			panelPerfil.setBackground(new Color(153, 204, 255));
 		}
-		else if(tema2.equals("oscuro")){
+		else if(tema.equals("oscuro")){
 			panelPerfil.setBackground(Color.GRAY);
 		}
-		else if(tema2.equals("claro")){
+		else if(tema.equals("claro")){
 			panelPerfil.setBackground(Color.YELLOW);
 		}
-		System.out.println(tema2);
 		
 		
 	}
 
 
+	/**
+	 * Inicializador de los componentes en el JInternalFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init(){
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -125,9 +139,9 @@ public class Perfil extends JInternalFrame {
 				.addGroup(gl_panelPerfil.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panelPerfil.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(lblWarning, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
 						.addComponent(panelBotones, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
-						.addComponent(panelDatos, Alignment.LEADING, 0, 0, Short.MAX_VALUE))
+						.addComponent(panelDatos, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(lblWarning, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 409, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(1510, Short.MAX_VALUE))
 		);
 		gl_panelPerfil.setVerticalGroup(
@@ -294,7 +308,11 @@ public class Perfil extends JInternalFrame {
 
 
 
-
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents(){
 
 		//Botón Editar
@@ -326,6 +344,7 @@ public class Perfil extends JInternalFrame {
 				btnGuardar.setVisible(false);
 				btnPassword.setVisible(false);
 				btnEditar.setVisible(true);
+				btnCancelar.setVisible(false);
 				conexion();
 				String newNombre = cajaNombre.getText();
 				String newApe = cajaApellidos.getText();
@@ -353,14 +372,14 @@ public class Perfil extends JInternalFrame {
 		            	tx.commit();
 		            	
 		            }
-		            lblWarning.setText("Debes reiniciar la aplicación para ver los datos modificados.");
+		            lblWarning.setText("Debes volver a logearte para ver tus datos modificados.");
 		     
 						}
 			
 				
 		});
 		
-		
+		//Boton de cambio de Password
 		btnPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -388,6 +407,14 @@ public class Perfil extends JInternalFrame {
 		});
 	}
 
+	/**
+	 * Método encargado de rellenar los campos de texto de la ficha de perfil del usuario.
+	 * 
+	 * El usuario es filtrado por su id.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param idalumno = Número entero identificador del usuario activo
+	 */
 	protected void rellenarPerfil() {
 
         conexion();
@@ -405,6 +432,11 @@ public class Perfil extends JInternalFrame {
 	}
 
 
+	/**
+	 * Inicializador de la conexión entre la aplicación y la base de datos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	protected void conexion() {
 		SessionFactory sessionFactory;
         Configuration configuration = new Configuration();
@@ -416,6 +448,9 @@ public class Perfil extends JInternalFrame {
 	}
 
 
+	/*
+	 * Getters y Setters
+	 */
 	public void setNombreText(String nombre){
 		this.cajaNombre.setText(nombre);
 	}

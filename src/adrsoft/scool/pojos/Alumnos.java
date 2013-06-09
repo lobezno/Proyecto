@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 public class Alumnos implements Serializable{
    
-    	private static final long serialVersionUID = 1L;
+	/*
+	 * Campos
+	 */
+    private static final long serialVersionUID = 1L;
 	private int idalumno;
 	private String nombre;
 	private String apellidos;
@@ -17,11 +20,31 @@ public class Alumnos implements Serializable{
 	private String curso;
 	private int club;
 	
-	
+	/**
+	 * Constructor de clase vacío.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	public Alumnos(){
 		
 	}
 	
+	/**
+	 * Constructor de clase con todos los parámetros del alumno para crear un nuevo objeto Alumnos. <br> Los parámetros inicializan las variables de clase.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param id = Identificador del alumno.
+	 * @param nom = Nombre del alumno
+	 * @param ape = Apellidos.
+	 * @param dni = Documento naciona de identidad.
+	 * @param dire = Dirección actual.
+	 * @param mail = Email de contacto y de login en la aplicación.
+	 * @param pass = Contraseña.
+	 * @param tele = Telefono de contacto.
+	 * @param centro = Centro en el que cursa sus estudios
+	 * @param cur = Curso de este centro
+	 * @param clu = Club al que pertenece como actividad extraescolar
+	 */
 	public Alumnos(int id, String nom, String ape, String dni, String dire, String mail, String pass, int tele, int centro, String cur, int clu){
 		this.idalumno = id;
 		this.nombre = nom;
@@ -35,6 +58,9 @@ public class Alumnos implements Serializable{
 		this.curso = cur;
 		this.club = clu;
 	}
+	
+	
+	//Getters y Setters
 
 	public int getIdalumno() {
 		return idalumno;

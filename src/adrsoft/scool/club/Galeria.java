@@ -7,18 +7,31 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+/**
+ * Clase encargada de cargar las fotos para luego manipularlas desde otra interfaz.
+ * 
+ * @author apegna
+ *@version 1.0
+ */
 public class Galeria {
 
     private ArrayList<ImageIcon> fotos = new ArrayList<ImageIcon>();
     private ImageIcon nofoto;
 
+    /**
+     * Constructor vacio.
+     * @author adrSoft
+     * @version 1.0
+     */
     public Galeria(){
         cargarFotos();
-        
+      
     }
 
     /**
-     * Método encargado de cargar las fotos desde la carpeta "assets"
+     * Método encargado de cargar las fotos desde la carpeta "fotos".
+     * @author adrSoft
+     * @version 1.0
      */
     private void cargarFotos() {
     	
@@ -31,7 +44,13 @@ public class Galeria {
  
 	}
 
-	/* devuelve una imagen de tamaño 100x100 VISTA PREVIA */
+
+    /**
+     * Devuelve una imagen de tamaño 100x100 como una vista previa
+     * @author adrSoft
+     * @param num = Indice de la foto elegida
+     * 
+     */
     public Icon getPreview(int num){
         if( num>=0 & num<fotos.size() )
         {
@@ -45,7 +64,14 @@ public class Galeria {
         }
     }
 
-   /* devuelve la foto original, pero si el tamaño es mayor al contenedor, lo redimensiona */
+   
+    /**
+     * Devuelve la foto original. Si el tamaño es mayor que el contenedor, lo redimensiona.
+     * @author adrSoft
+     * @param num = Indice de la foto elegida
+     * @param d = Dimensión de la foto
+     * 
+     */
    public Icon getFoto(int num, Dimension d){
         if( num>=0 & num<fotos.size() )
         {
@@ -67,7 +93,14 @@ public class Galeria {
         }
     }
 
-   /* redimensiona la imagen en para que ingrese al contendor pero manteniendo sus proporciones*/
+   
+   /**
+    * Redimensiona la imagen para que quepa en el contenedor pero manteniendo sus proporciones.
+    * @author adrSoft
+    * @param i = Imagen a tratar.
+    * @param v = Valor de redimensionado 
+    * 
+    */
     private ImageIcon Disminuir(ImageIcon i, float v){
         int valEscalaX = (int) (i.getIconWidth() * v );
         int valEscalaY = (int) (i.getIconHeight() * v );
@@ -75,7 +108,14 @@ public class Galeria {
         return new ImageIcon(mini);
      }
 
-    /* devuelve el valor de escala para redimensionar la imagen*/
+    
+    /**
+     * Devuelve el valor de escalado para redimensionar la imagen.
+     * @author adrSoft
+     * @version 1.0
+     * @param a
+     * @param b
+     */
     private float getValor(int a, int b){
         return Math.abs((a/new Float(b))-2f);
     }

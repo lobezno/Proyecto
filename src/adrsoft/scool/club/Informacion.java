@@ -16,12 +16,18 @@ import java.awt.Insets;
 
 public class Informacion extends JInternalFrame {
 
+    /*
+     * Campos
+     */
     private static final long serialVersionUID = 1L;
     private int mIdClub;
     private JTextArea textArea;
 
 	/**
-	 * Create the frame.
+	 * Constructor de la clase con un argumento, idClub, que es el club del usuario activo.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param idClub = Identificador del club al que pertenece el usuario activo.
 	 */
 	public Informacion(int idClub) {
 	    this.mIdClub = idClub;
@@ -32,6 +38,11 @@ public class Informacion extends JInternalFrame {
 
 	
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 	    getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 300);
@@ -43,6 +54,9 @@ public class Informacion extends JInternalFrame {
 		lblNewLabel.setForeground(Color.BLUE);
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 15));
+		textArea.setLineWrap(true);
+		textArea.setColumns(1);
 		textArea.setBackground(new Color(153, 204, 255));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -50,27 +64,34 @@ public class Informacion extends JInternalFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(41)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblNewLabel)
-						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 616, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 616, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel))
 					.addContainerGap(37, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(45)
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		getContentPane().setLayout(groupLayout);
 		rellenarInfo();
 	}
 
+	/**
+	 * Método encargado de rellenar la información relevante del club seleccionado.
+	 * <br>
+	 * Dependiendo del parámetro idClub recogido en el constructor, mostrará un texto u otro.
+	 * 
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void rellenarInfo() {
 	    textArea.setEditable(false);
 	   
-	    String ajedrez = "Bienvenido al club de ajedrez.\nAquí podras jaquear y matear";
+	    String ajedrez = "Bienvenido al club de ajedrez.\nAquí podras jaquear y matear.\nLa calidad humana es una virtud escasa a pesar de encontrarnos en la era de la cibernética; no obstante, me llena de entusiasmo descubrir a un grupo de amigos que han reunido todo su esfuerzo para transmitir la esperanza de que es posible aunar nobleza y corazón, junto a la honestidad deportiva presente siempre en el Ajedrez.";
 	    String lectura = "Leyendo se conoce gente!";
 	    String videojuegos = "Panyum Panyum, derecha, derecha, izquierda, abajo, circulo, triangulo";
 	    String atletismo = "Corre Corre.. que te pillo. Atletas unidos!";

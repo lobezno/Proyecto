@@ -1,7 +1,5 @@
 package adrsoft.scool.view;
 
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,6 +17,8 @@ import javax.swing.JToolBar;
 import javax.swing.JDesktopPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+
+import adrsoft.scool.model.FakeChat;
 import adrsoft.scool.pojos.Alumnos;
 import com.toedter.calendar.JCalendar;
 import java.awt.event.ActionListener;
@@ -37,24 +37,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
-import java.awt.GridLayout;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
+/**
+ * Clase encargada de renderizar el menú principal de los alumnos.
+ * @author adrSoft
+ *@version 1.0
+ */
 public class AlumnosMain extends JFrame {
 
-	
-	/**
-     * 
-     */
+
     private static final long serialVersionUID = 1L;
-	/**
-     * 
-     */
+
 
 	/*
 	 * Campos
@@ -91,13 +87,16 @@ public class AlumnosMain extends JFrame {
 	private boolean maximizada;
 	private JButton button;
 	private JPanel panelChat;
-	private JTextField textField;
+	private JScrollPane scrollPane_1;
+	private JTextField textChat;
 	private JButton btnChatEnviar;
-	private JTextField chatArea;
+	private JTextPane chatArea;
+	private FakeChat fakeChat;
+	private JLabel lblNewLabel;
 
 
 	/**
-	 * Create the frame.
+	 * Constructor de clase sin parametros.
 	 */
 	public AlumnosMain() {
 		setBackground(UIManager.getColor("activeCaption"));
@@ -106,6 +105,15 @@ public class AlumnosMain extends JFrame {
 		createConnection();
 	}
 	
+	/**
+	 * Constructor que necesita varios parametros para la posterior personalización de  
+	 * las caracteristicas de la vista.
+	 * @param mail = Email del alumno
+	 * @param nom = Nombre del alumno
+	 * @param ape = Apellidos del alumno	
+	 * @param clu = Entero que indica a qué club pertenece el alumno
+	 * @param idalu = Identificador del alumno
+	 */
 	public AlumnosMain(String mail, String nom, String ape, int clu, int idalu) {
 		setBackground(UIManager.getColor("activeCaption"));
 		this.email = mail;
@@ -113,14 +121,20 @@ public class AlumnosMain extends JFrame {
 		this.nombre = nom;
 		this.apellidos = ape;
 		this.mIdClub = clu;
-		System.out.print("Alumnosmain Club: " + mIdClub);
+		
 		init();
 		createEvents();
 		createConnection();
+		fakeChat = new FakeChat(chatArea);
+		
 		
 	}
 	
-	
+	/**
+	 * Inicializador de la conexión entre la aplicación y la base de datos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createConnection() {
 	     	
 		SessionFactory sessionFactory;
@@ -129,11 +143,15 @@ public class AlumnosMain extends JFrame {
 	        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
 	        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	        session = sessionFactory.openSession();
-		
 	}
-
+	
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
-
+	    	
 		setTitle("Bienvenido, " + nombre + " " + apellidos);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -211,6 +229,7 @@ public class AlumnosMain extends JFrame {
 		lblMouseOver.setFocusable(false);
 		
 		btnMaxMin = new JButton("");
+	
 		btnMaxMin.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		btnMaxMin.setContentAreaFilled(false);
 		btnMaxMin.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/max.png")));
@@ -222,6 +241,47 @@ public class AlumnosMain extends JFrame {
 		
 		panelChat = new JPanel();
 		panelChat.setBackground(new Color(153, 204, 255));
+		
+		scrollPane_1 = new JScrollPane();
+		
+		textChat = new JTextField();
+		textChat.setColumns(10);
+		
+		btnChatEnviar = new JButton("Enviar");
+		btnChatEnviar.setFont(new Font("Verdana", Font.PLAIN, 5));
+	
+		GroupLayout gl_panelChat = new GroupLayout(panelChat);
+		gl_panelChat.setHorizontalGroup(
+			gl_panelChat.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelChat.createSequentialGroup()
+					.addGroup(gl_panelChat.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_panelChat.createSequentialGroup()
+							.addComponent(textChat, GroupLayout.PREFERRED_SIZE, 148, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panelChat.setVerticalGroup(
+			gl_panelChat.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelChat.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 251, GroupLayout.PREFERRED_SIZE)
+					.addGap(7)
+					.addGroup(gl_panelChat.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textChat, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGap(2))
+		);
+		
+		chatArea = new JTextPane();
+		chatArea.setFocusable(false);
+		scrollPane_1.setViewportView(chatArea);
+		panelChat.setLayout(gl_panelChat);
+		
+		lblNewLabel = new JLabel("---------------------------------");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel.setFont(new Font("Verdana", Font.BOLD, 20));
 	
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -230,74 +290,47 @@ public class AlumnosMain extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 336, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+							.addGap(22)
+							.addComponent(mDesktopPane, GroupLayout.PREFERRED_SIZE, 707, GroupLayout.PREFERRED_SIZE)))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblMouseOver, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-						.addComponent(mDesktopPane, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 707, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(panelChat, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 204, Short.MAX_VALUE)
-						.addComponent(button, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap())
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(panelChat, GroupLayout.PREFERRED_SIZE, 207, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createSequentialGroup()
+								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+								.addContainerGap()))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+							.addGap(18))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(4)
-					.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(lblMouseOver, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(toolBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
 							.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
-							.addGap(55)
-							.addComponent(panelChat, GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
-						.addComponent(mDesktopPane, GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE))
+							.addGap(18)
+							.addComponent(panelChat, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		
-		btnChatEnviar = new JButton("Enviar");
-		
-		JScrollPane scrollPane = new JScrollPane();
-		GroupLayout gl_panelChat = new GroupLayout(panelChat);
-		gl_panelChat.setHorizontalGroup(
-			gl_panelChat.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panelChat.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-					.addGap(38))
-				.addGroup(gl_panelChat.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
-		gl_panelChat.setVerticalGroup(
-			gl_panelChat.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panelChat.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panelChat.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-						.addComponent(btnChatEnviar, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
-		);
-		
-		chatArea = new JTextField();
-		scrollPane.setViewportView(chatArea);
-		chatArea.setColumns(10);
-		panelChat.setLayout(gl_panelChat);
 		
 		btnPerfil = new JButton("");
 	
@@ -334,19 +367,50 @@ public class AlumnosMain extends JFrame {
 		toolBar.add(btnClub);
 		contentPane.setLayout(gl_contentPane);
 	
-		
 	}
+
+	
+
+	
+	/**
+	 * Método encargado de rellenar los campos de texto de la ficha de perfil del usuario.
+	 * 
+	 * El usuario es filtrado por su email.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param email = email del usuario activo
+	 */
+	private void rellenarPerfil() {
+
+            Query query = session.createQuery("SELECT a FROM Alumnos a WHERE a.email='"+email+"'");
+	    @SuppressWarnings("unchecked")
+		List<Alumnos> alumnos = query.list();
+            for (Alumnos alumno : alumnos) {
+                perfil.setNombreText(alumno.getNombre());
+                perfil.setApellidosText(alumno.getApellidos());
+                perfil.setDireccionText(alumno.getDireccion());
+                perfil.setEmailText(alumno.getEmail());
+                perfil.setCursoText(alumno.getCurso());
+                perfil.setTelefonoText(String.valueOf(alumno.getTelefono()));
+            }
+		
+		}
 
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	private void createEvents(){
+	    	//Botón Información
 		mntmInformacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showConfirmDialog(null, "Proyecto de CFGS DAM 2013 \nCreado por: Adrian Peña Gomez\nProyecto de fin de ciclo del grado superior Desarrollo de Aplicaciones Multiplataforma\nI.E.S. Miguel Herrero Pereda 2013","Acerca de..",JOptionPane.DEFAULT_OPTION);
 				
 			}
 		});
+		
+		//Botón salir
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -371,21 +435,7 @@ public class AlumnosMain extends JFrame {
 		
 			}
 
-			private void rellenarPerfil() {
-
-	            System.out.println("----------- Uso de list() -----------");
-	            Query query = session.createQuery("SELECT a FROM Alumnos a WHERE a.email='"+email+"'");
-		    List<Alumnos> alumnos = query.list();
-	            for (Alumnos alumno : alumnos) {
-	                perfil.setNombreText(alumno.getNombre());
-	                perfil.setApellidosText(alumno.getApellidos());
-	                perfil.setDireccionText(alumno.getDireccion());
-	                perfil.setEmailText(alumno.getEmail());
-	                perfil.setCursoText(alumno.getCurso());
-	                perfil.setTelefonoText(String.valueOf(alumno.getTelefono()));
-	            }
-			
-			}
+	
 		});
 		
 		//Boton de Mensajes
@@ -456,14 +506,6 @@ public class AlumnosMain extends JFrame {
 		//Boton de webs
 		btnWebs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-//	            System.out.println("----------- Uso de list() -----------");
-//	            Query query = session.createQuery("SELECT a FROM Alumnos a");
-//	            List<Alumnos> alumnos = query.list();
-//	            for (Alumnos alumno : alumnos) {
-//	                System.out.println(alumno.toString());
-//	                System.out.println("\n*********");
-//	            }
 				Webs mWebs = new Webs();
 				mWebs.setVisible(true);
 				mWebs.setBorder(null);
@@ -541,7 +583,6 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Tema oscuro
-	
 		mntmDark.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tema = "oscuro";
@@ -572,7 +613,6 @@ public class AlumnosMain extends JFrame {
 		});
 		
 		//Tema claro
-		
 		mntmLight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tema = "claro";
@@ -603,9 +643,41 @@ public class AlumnosMain extends JFrame {
 			}
 		});
 		
-		btnChatEnviar.addActionListener(new ActionListener(){
+		//Botón enviar del chat
+		btnChatEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				chatArea.setText("hola!");
+			    String mensaje = nombre + ": " +textChat.getText() + "\n";
+			    
+			  fakeChat.appendToPane(chatArea, mensaje, Color.RED);
+			  textChat.setText("");
+			}
+		});
+		
+		//Mouseover Expand
+		btnMaxMin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				if(maximizada)
+				lblMouseOver.setText("Restaurar");
+				else
+				lblMouseOver.setText("Maximizar");	
+				
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblMouseOver.setText("");
+			}
+		});
+		
+		//Mouseover Salida
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblMouseOver.setText("Salir");
+			}
+			@Override
+			public void mouseExited(MouseEvent e){
+				lblMouseOver.setText("");
 			}
 		});
 	}

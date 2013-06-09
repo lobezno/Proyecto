@@ -30,9 +30,17 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+/**
+ * Clase de login inicial
+ * @author adrSoft
+ * @version 1.0
+ *
+ */
 public class Inicio extends JFrame {
 
-
+    	/*
+    	 * Campos
+    	 */
     	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final Action action = new SwingAction();
@@ -45,7 +53,9 @@ public class Inicio extends JFrame {
 	private String textpass;
 	
 	/**
-	 * Launch the application.
+	 * Clase Lanzadera de la aplicación
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -84,7 +94,9 @@ public class Inicio extends JFrame {
 	}
 	
 	/**
-	 * Inicializador
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	private void init(){
 		setUndecorated(true);
@@ -169,19 +181,21 @@ public class Inicio extends JFrame {
 	}
 	
 	/**
-	 * Creador de eventos
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	private void createEvents(){
+	    
+	    	//Botón salir
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 			}
 		});
 		
+		//Botón login
 		btnGo.addActionListener(new ActionListener() {
-		
-
-			
 
 			public void actionPerformed(ActionEvent arg0) {
 				check();
@@ -189,9 +203,6 @@ public class Inicio extends JFrame {
 		});
 		
 		//Pulsación de enter
-
-
-		
 		passwordField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -201,6 +212,7 @@ public class Inicio extends JFrame {
 	            }
 			}
 		});
+		
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -214,6 +226,11 @@ public class Inicio extends JFrame {
 		
 	}
 	
+	/**Método que comprueba si el Email y la Contraseña introducidos corresponden con algún usuario
+	 * existente en la base de datos.
+	 *  @author adrSoft
+	 * @version 1.0
+	 */
 	protected void check() {
 		//mail tiene que contener un mail de la base de datos
 		textmail = textField.getText();
@@ -222,18 +239,19 @@ public class Inicio extends JFrame {
             List<Alumnos> alumnos = query.list();
             for (Alumnos alumno : alumnos) {
             	if(textmail.equals(alumno.getEmail()) && textpass.equals(alumno.getPassword())){
-            		int averseseclub = alumno.getClub();
-            		System.out.println("ÑAAAAAAAAAAAAAAAAAAAAAAA" + averseseclub);
             		AlumnosMain alu = new AlumnosMain(textmail, alumno.getNombre(), alumno.getApellidos(), alumno.getClub(), alumno.getIdalumno());
 					alu.setVisible(true);
 					contentPane.setEnabled(false);
 					contentPane.setVisible(false);
             	}
             }
-
-		
 	}
 
+	/**
+	 * Inicializador de la conexión entre la aplicación y la base de datos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createConnection() {
      	
 		SessionFactory sessionFactory;

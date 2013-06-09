@@ -18,6 +18,10 @@ import java.awt.event.MouseEvent;
 import java.awt.Font;
 
 public class Notas extends JInternalFrame {
+    
+    	/*
+    	 * Campos
+    	 */
     	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JScrollPane scrollPane;
@@ -27,7 +31,9 @@ public class Notas extends JInternalFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Constructor vacio.
+	 * @author adrSoft
+	 * @version 1.0
 	 */
 	public Notas() {
 		setBorder(null);
@@ -45,13 +51,18 @@ public class Notas extends JInternalFrame {
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
 		);
 		getContentPane().setLayout(groupLayout);
-		((javax.swing.plaf.basic.BasicInternalFrameUI) 
-		getUI()).setNorthPane(null);
+		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
 		init();
 		createEvents();
 	}
 
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents() {
+	    	//Botón contactar
 		btnContacta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showConfirmDialog(null, "Función no implementada aún.\nEstará disponible en un corto periodo de tiempo.","Oops..",JOptionPane.DEFAULT_OPTION);
@@ -87,16 +98,18 @@ public class Notas extends JInternalFrame {
 				}
 			}
 		});
-	
-		
 	}
 
+	/**
+	 * Inicializador de los componentes en el JInternalFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 	
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		Object[][] datos = {
@@ -123,7 +136,6 @@ public class Notas extends JInternalFrame {
 				
 				JPanel panel = new JPanel();
 				panel.setBackground(new Color(153, 204, 255));
-				contentPane.add(panel, BorderLayout.NORTH);
 				table = new JTable(dtm);
 			
 //				table.setPreferredScrollableViewportSize(new Dimension(250, 100));
@@ -134,8 +146,24 @@ public class Notas extends JInternalFrame {
 				btnContacta = new JButton("Selecciona una materia");
 				btnContacta.setEnabled(false);
 				btnContacta.setFont(new Font("Tahoma", Font.BOLD, 11));
-			
-				contentPane.add(btnContacta, BorderLayout.SOUTH);
+				GroupLayout gl_contentPane = new GroupLayout(contentPane);
+				gl_contentPane.setHorizontalGroup(
+					gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnContacta, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				);
+				gl_contentPane.setVerticalGroup(
+					gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)
+							.addGap(115)
+							.addComponent(btnContacta, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+				);
+				contentPane.setLayout(gl_contentPane);
 			
 				 
 	}

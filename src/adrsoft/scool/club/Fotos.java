@@ -11,11 +11,15 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
+import adrsoft.scool.model.Galeria;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Fotos extends JInternalFrame {
  
@@ -38,11 +42,16 @@ public class Fotos extends JInternalFrame {
     	private int b = 1;
     	private int c = 2;
     	private int d = 3;
+    	private int club;
 
 	/**
-	 * Create the frame.
+	 * Constructor de clase vacio.
+	 * @author adrSoft
+	 * @version 1.0
+	 * @param mClub 
 	 */
-	public Fotos() {
+	public Fotos(int mClub) {
+		this.club = mClub;
 		getContentPane().setBackground(new Color(153, 204, 255));
 		setBounds(100, 100, 710, 300);
 		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
@@ -51,7 +60,14 @@ public class Fotos extends JInternalFrame {
 			
 	}
 
+	/**
+	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void createEvents() {
+	    
+	    	//Pulsación sobre thumbnail 1
 		lblFoto1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
@@ -59,6 +75,7 @@ public class Fotos extends JInternalFrame {
 			}
 		});
 		
+		//Pulsación sobre thumbnail 2
 		lblFoto2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -66,6 +83,7 @@ public class Fotos extends JInternalFrame {
 			}
 		});
 		
+	    	//Pulsación sobre thumbnail 3
 		lblFoto3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -73,6 +91,7 @@ public class Fotos extends JInternalFrame {
 			}
 		});
 		
+	    	//Pulsación sobre thumbnail 4
 		lblFoto4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -80,6 +99,7 @@ public class Fotos extends JInternalFrame {
 			}
 		});
 		
+		//Botón Anterior
 		btnAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			     a-=1;b-=1;c-=1;d-=1;
@@ -90,6 +110,7 @@ public class Fotos extends JInternalFrame {
 			}
 		});
 		
+		//Botón Siguiente
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			     a+=1;b+=1;c+=1;d+=1;
@@ -102,6 +123,11 @@ public class Fotos extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Inicializador de los componentes en el JFrame.
+	 * @author adrSoft
+	 * @version 1.0
+	 */
 	private void init() {
 		getContentPane().setLayout(new GridLayout(2,1, 20, 20));
 		
@@ -111,6 +137,7 @@ public class Fotos extends JInternalFrame {
 		panelFoto.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		lblFotoGrande = new JLabel("");
+		lblFotoGrande.setHorizontalAlignment(SwingConstants.CENTER);
 		panelFoto.add(lblFotoGrande,BorderLayout.CENTER);
 		
 		panelGaleria = new JPanel();
@@ -169,16 +196,13 @@ public class Fotos extends JInternalFrame {
 		btnSiguiente.setBorderPainted(false);
 		btnSiguiente.setBorder(null);
 		panelGaleria.add(btnSiguiente);
-		
-		galeria = new Galeria();
+		galeria = new Galeria(club);
 		
 		lblFoto1.setIcon(galeria.getPreview(0));
 		lblFoto2.setIcon(galeria.getPreview(1));
 		lblFoto3.setIcon(galeria.getPreview(2));
 		lblFoto4.setIcon(galeria.getPreview(3));
 
-		
-		
 	    
 	}
 
