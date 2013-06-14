@@ -66,7 +66,7 @@ public class Inventario extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				switch(club){
 				case 1:
-					ruta = "/sCooL/inventarioAjedrez.xls";
+					ruta = "inventarioAjedrez.xls";
 					break;
 				case 2:
 					ruta = "inventarioAjedrez.xls";
