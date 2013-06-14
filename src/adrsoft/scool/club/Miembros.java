@@ -1,6 +1,5 @@
 package adrsoft.scool.club;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.JInternalFrame;
@@ -18,7 +17,13 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-
+/**
+ * Clase que instancia una tabla con el conjunto de miembros de un club.<br><br>
+ * Tambien crea botones para poder contactar rápidamente con ellos, de un solo click. Para esto, utiliza la clase ButtonColumn del paquete adrsoft.scool.model, que crea los botones y les proporciona una funcionalidad.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Miembros extends JInternalFrame {
 
         /*
@@ -35,22 +40,24 @@ public class Miembros extends JInternalFrame {
 	/**
 	 * Constructor vacío de la clase.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
+	 * @param tema 
 	 */
-	public Miembros() {
+	public Miembros(String tema) {
 		setBorder(null);
 		setBounds(100, 100, 710, 622);
 		
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 		getUI()).setNorthPane(null);
 		init();
+		pintarTema(tema);
 	}
 
 
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 	    
@@ -73,9 +80,9 @@ public class Miembros extends JInternalFrame {
 		setContentPane(contentPane);
 		
 		Object[][] datos = {
-				{"Andres", "Lopez", "Presidente"},
+				{"Antonio", "Lopez", "Presidente"},
 				{"Juan", "De Dios", "Tesorero" },
-				{"Marta", "Sanchez", "Miembro"},
+				{"Beatriz", "Sanchez", "Miembro"},
 				};
 				String[] columnNames = {"Nombre","Apellidos","Cometido", "Contacto"};
 				 DefaultTableModel dtm= new DefaultTableModel(datos,columnNames);
@@ -131,6 +138,30 @@ public class Miembros extends JInternalFrame {
 				);
 				contentPane.setLayout(gl_contentPane);
 	
+	}
+	
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			contentPane.setBackground(UIManager.getColor("textHighlight"));
+			panelTabla.setBackground(new Color(153, 204, 255));
+		}
+		else if(tema.equals("oscuro")){
+			contentPane.setBackground(Color.BLACK);
+			panelTabla.setBackground(Color.GRAY);
+		
+		}
+		else if(tema.equals("claro")){
+			contentPane.setBackground(new Color(255, 255, 102));
+			panelTabla.setBackground(new Color(255, 255, 204));
+		}
+		
+		
 	}
 
 }

@@ -29,14 +29,12 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
-
-
 /**
  * Clase que recoge el club del alumno y renderiza un portal donde puede interactuar con las caracteristicas
  * del club, así como con sus miembros.
  * 
  * @author adrSoft
- *@version 1.0
+ *@version vAlpha10
  */
 public class Club extends JInternalFrame {
 
@@ -44,32 +42,37 @@ public class Club extends JInternalFrame {
     	 * Campos
     	 */
     	private static final long serialVersionUID = 1L;
-	private JButton btnNewButton;
-	private JButton btnNewButton_6;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
-	private JButton btnNewButton_4;
-	private JButton btnNewButton_5;
+	private JButton btnInfo;
+	private JButton btnNormas;
+	private JButton btnNoticias;
+	private JButton btnMiembros;
+	private JButton btnInventario;
+	private JButton btnFotos;
+	private JButton btnEnlaces;
 	private JDesktopPane clubDesktopPane;
 	private int mClub;
 	private JLabel lblNewLabel;
+	private JPanel panel;
+	private String tema;
 
 
 
 	/**
 	 *Constructor que inicializa la clase habiendole pasado el id del club a mostrar.
 	 *@author adrSoft
-	 *@version 1.0
+	 *@version vAlpha10
 	 *@param clu = idclub(identificador del club del alumno)
+	 * @param tema 
 	 */
-	public Club(int clu) {
-		getContentPane().setBackground(new Color(153, 204, 255));
+	public Club(int clu, String tema) {
+		this.tema = tema;
+		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		((javax.swing.plaf.basic.BasicInternalFrameUI) 
 				getUI()).setNorthPane(null);
 		this.mClub = clu;
 		init();
 		createEvents();
+		pintarTema(tema);
 
 	}
 
@@ -77,14 +80,17 @@ public class Club extends JInternalFrame {
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createEvents() {
 	    
 	    	//Boton Información
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Informacion info = new Informacion(mClub);
+		btnInfo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				Informacion info = new Informacion(mClub, tema);
 				info.setVisible(true);
 				clubDesktopPane.add(info);
 					try {
@@ -93,14 +99,16 @@ public class Club extends JInternalFrame {
 						e2.printStackTrace();
 					}
 					info.setUI(null);
+			
+				
 			}
 		});
 		
 		//Botón normas
-		btnNewButton_6.addActionListener(new ActionListener() {
+		btnNormas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				Normas normas = new Normas(mClub);
+				Normas normas = new Normas(mClub,tema);
 				normas.setVisible(true);
 				clubDesktopPane.add(normas);
 					try {
@@ -114,9 +122,9 @@ public class Club extends JInternalFrame {
 		});
 		
 		//Botón noticias
-		btnNewButton_1.addActionListener(new ActionListener() {
+		btnNoticias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Noticias notis = new Noticias(mClub);
+			    Noticias notis = new Noticias(mClub,tema);
 			    notis.setVisible(true);
 			    clubDesktopPane.add(notis);
 			    try {
@@ -129,9 +137,9 @@ public class Club extends JInternalFrame {
 		});
 		
 		//Botón miembros
-		btnNewButton_2.addActionListener(new ActionListener() {
+		btnMiembros.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Miembros miem = new Miembros();
+			    Miembros miem = new Miembros(tema);
 			    miem.setVisible(true);
 			   clubDesktopPane.add(miem);
 			   try {
@@ -144,9 +152,9 @@ public class Club extends JInternalFrame {
 		});
 		
 		//Botón inventario
-		btnNewButton_3.addActionListener(new ActionListener() {
+		btnInventario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Inventario inven = new Inventario(mClub);
+			    Inventario inven = new Inventario(mClub,tema);
 			    inven.setVisible(true);
 			    clubDesktopPane.add(inven);
 			    try {
@@ -159,9 +167,9 @@ public class Club extends JInternalFrame {
 		});
 		
 		//Botón fotos
-		btnNewButton_4.addActionListener(new ActionListener() {
+		btnFotos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Fotos fots = new Fotos(mClub);
+			    Fotos fots = new Fotos(mClub,tema);
 			    fots.setVisible(true);
 			    clubDesktopPane.add(fots);
 			    try {
@@ -174,9 +182,9 @@ public class Club extends JInternalFrame {
 		});
 		
 		//Botón enlaces
-		btnNewButton_5.addActionListener(new ActionListener() {
+		btnEnlaces.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Enlaces enla = new Enlaces(mClub);
+			    Enlaces enla = new Enlaces(mClub,tema);
 			    enla.setVisible(true);
 			    clubDesktopPane.add(enla);
 			    try {
@@ -194,11 +202,11 @@ public class Club extends JInternalFrame {
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(153, 204, 255));
+		panel = new JPanel();
+		panel.setBackground(UIManager.getColor("textHighlight"));
 		
 		clubDesktopPane = new JDesktopPane();
 		clubDesktopPane.setBackground(new Color(153, 204, 255));
@@ -259,55 +267,86 @@ public class Club extends JInternalFrame {
 		toolBar.setFloatable(false);
 		panel.add(toolBar);
 		
-		btnNewButton = new JButton("Informaci\u00F3n");
+		btnInfo = new JButton("Informaci\u00F3n");
 
 		
-		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton);
+		btnInfo.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnInfo.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnInfo);
 		
 		JSeparator separator = new JSeparator();
 		toolBar.add(separator);
 		
-		btnNewButton_6 = new JButton("Normas");
+		btnNormas = new JButton("Normas");
 
-		btnNewButton_6.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_6.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_6);
+		btnNormas.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnNormas.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnNormas);
 		
-		btnNewButton_1 = new JButton("Noticias");
+		btnNoticias = new JButton("Noticias");
 	
-		btnNewButton_1.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_1.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_1);
+		btnNoticias.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnNoticias.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnNoticias);
 		
-		btnNewButton_2 = new JButton("Miembros");
+		btnMiembros = new JButton("Miembros");
 	
-		btnNewButton_2.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_2.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_2);
+		btnMiembros.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnMiembros.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnMiembros);
 		
-		btnNewButton_3 = new JButton("Inventario");
+		btnInventario = new JButton("Inventario");
 
-		btnNewButton_3.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_3.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_3);
+		btnInventario.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnInventario.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnInventario);
 		
-		btnNewButton_4 = new JButton("Fotos");
+		btnFotos = new JButton("Fotos");
 	
-		btnNewButton_4.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_4.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_4);
+		btnFotos.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnFotos.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnFotos);
 		
-		btnNewButton_5 = new JButton("Enlaces");
+		btnEnlaces = new JButton("Enlaces");
 	
-		btnNewButton_5.setFont(new Font("Verdana", Font.BOLD, 12));
-		btnNewButton_5.setBackground(UIManager.getColor("activeCaption"));
-		toolBar.add(btnNewButton_5);
+		btnEnlaces.setFont(new Font("Verdana", Font.BOLD, 12));
+		btnEnlaces.setBackground(UIManager.getColor("activeCaption"));
+		toolBar.add(btnEnlaces);
 		getContentPane().setLayout(groupLayout);
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBounds(100, 100, 710, 523);
 		
 		
 	}
+	
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			
+		clubDesktopPane.setBackground(new Color(153, 204, 255));
+		panel.setBackground(UIManager.getColor("textHighlight"));
+		getContentPane().setBackground(UIManager.getColor("textHighlight"));
+		}
+		else if(tema.equals("oscuro")){
+			
+			clubDesktopPane.setBackground(Color.GRAY);
+			panel.setBackground(Color.BLACK);
+			getContentPane().setBackground(Color.BLACK);
+			
+		}
+		else if(tema.equals("claro")){
+			
+			clubDesktopPane.setBackground(new Color(255, 255, 204));
+			panel.setBackground(new Color(255, 255, 102));
+			getContentPane().setBackground(new Color(255, 255, 102));
+		}
+		
+		
+	}
+	
 }

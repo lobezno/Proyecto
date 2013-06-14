@@ -2,6 +2,13 @@ package adrsoft.scool.pojos;
 
 import java.io.Serializable;
 
+/**
+ * Clase encargada de crear objetos para el mapeo relacional entre la tabla de datos 
+ * de SQL y los objetos Alumno de esta aplicación.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Alumnos implements Serializable{
    
 	/*
@@ -23,7 +30,7 @@ public class Alumnos implements Serializable{
 	/**
 	 * Constructor de clase vacío.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	public Alumnos(){
 		
@@ -32,7 +39,7 @@ public class Alumnos implements Serializable{
 	/**
 	 * Constructor de clase con todos los parámetros del alumno para crear un nuevo objeto Alumnos. <br> Los parámetros inicializan las variables de clase.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 * @param id = Identificador del alumno.
 	 * @param nom = Nombre del alumno
 	 * @param ape = Apellidos.
@@ -61,7 +68,6 @@ public class Alumnos implements Serializable{
 	
 	
 	//Getters y Setters
-
 	public int getIdalumno() {
 		return idalumno;
 	}

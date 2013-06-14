@@ -17,6 +17,11 @@ import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * Clase encargada de instanciar unos botones que contienen links a páginas interesantes relevantes al club.
+ * @author adrSoft
+ *@version vAlpha10
+ */
 public class Enlaces extends JInternalFrame {
 
     /*
@@ -32,23 +37,51 @@ public class Enlaces extends JInternalFrame {
 	/**
 	 * Constructor vacio.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 * @param mClub 
+	 * @param tema 
 	 */
-	public Enlaces(int mClub) {
+	public Enlaces(int mClub, String tema) {
 		this.club = mClub;
 		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 300);
 		init();
 		createButtons();
+		pintarTema(tema);
 	}
 
 	
 
 	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			panel.setBackground(new Color(153, 204, 255));
+			getContentPane().setBackground(UIManager.getColor("textHighlight"));
+		}
+		else if(tema.equals("oscuro")){
+			panel.setBackground(Color.GRAY);
+			getContentPane().setBackground(Color.BLACK);
+		
+		}
+		else if(tema.equals("claro")){
+			panel.setBackground(new Color(255, 255, 204));
+			getContentPane().setBackground(new Color(255, 255, 102));
+		}
+		
+		
+	}
+
+
+
+	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 			
@@ -114,6 +147,11 @@ public class Enlaces extends JInternalFrame {
 
 	}
 	
+	/**
+	 * Método encargado de la creación de los botones de la sección enlaces, así como de <br>sus eventos.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 */
 	private void createButtons() {
 		switch(club){
 		case 1:

@@ -1,5 +1,5 @@
 package adrsoft.scool.view;
-import java.awt.BorderLayout;
+
 import javax.swing.JInternalFrame;
 import javax.swing.GroupLayout;
 import javax.swing.JOptionPane;
@@ -16,7 +16,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.UIManager;
 
+/**
+ * Clase visualizadora de las notas del usuario.<br><br>
+ * Una vez se ha seleccionado una materia, se dá la posibilidad al usuario de contactar con el 
+ * responsable de esa materia a traves del boton situado en la parte inferior.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Notas extends JInternalFrame {
     
     	/*
@@ -27,15 +36,17 @@ public class Notas extends JInternalFrame {
 	private JScrollPane scrollPane;
 	private JButton btnContacta;
 	private JTable table;
+	private JPanel panelNotas;
 
 
 
 	/**
 	 * Constructor vacio.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
+	 * @param tema 
 	 */
-	public Notas() {
+	public Notas(String tema) {
 		setBorder(null);
 		setBounds(100, 100, 710, 622);
 		
@@ -54,12 +65,13 @@ public class Notas extends JInternalFrame {
 		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
 		init();
 		createEvents();
+		pintarTema(tema);
 	}
 
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createEvents() {
 	    	//Botón contactar
@@ -103,12 +115,12 @@ public class Notas extends JInternalFrame {
 	/**
 	 * Inicializador de los componentes en el JInternalFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 	
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(153, 204, 255));
+		contentPane.setBackground(UIManager.getColor("textHighlight"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -134,13 +146,13 @@ public class Notas extends JInternalFrame {
 			
 				
 				
-				JPanel panel = new JPanel();
-				panel.setBackground(new Color(153, 204, 255));
+				panelNotas = new JPanel();
+				panelNotas.setBackground(new Color(153, 204, 255));
 				table = new JTable(dtm);
 			
 //				table.setPreferredScrollableViewportSize(new Dimension(250, 100));
 				scrollPane = new JScrollPane(table);
-				panel.add(scrollPane);
+				panelNotas.add(scrollPane);
 				scrollPane.setBackground(new Color(153, 204, 255));
 				
 				btnContacta = new JButton("Selecciona una materia");
@@ -151,14 +163,16 @@ public class Notas extends JInternalFrame {
 					gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnContacta, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnContacta, GroupLayout.PREFERRED_SIZE, 700, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(107)
+									.addComponent(panelNotas, GroupLayout.PREFERRED_SIZE, 520, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				);
 				gl_contentPane.setVerticalGroup(
 					gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panelNotas, GroupLayout.PREFERRED_SIZE, 437, GroupLayout.PREFERRED_SIZE)
 							.addGap(115)
 							.addComponent(btnContacta, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())
@@ -167,5 +181,29 @@ public class Notas extends JInternalFrame {
 			
 				 
 	}
+	
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+		contentPane.setBackground(UIManager.getColor("textHighlight"));
+		panelNotas.setBackground(new Color(153, 204, 255));
+		
+		}
+		else if(tema.equals("oscuro")){
+			contentPane.setBackground(Color.GRAY);
+			panelNotas.setBackground(Color.BLACK);
+		
+		}
+		else if(tema.equals("claro")){
+			contentPane.setBackground(new Color(255, 255, 102));
+			panelNotas.setBackground(new Color(255, 255, 204));
+		
+	}
 
+}
 }

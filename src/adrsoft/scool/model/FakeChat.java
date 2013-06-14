@@ -16,12 +16,24 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
 
-
+/**
+ * Clase encargada de simular un chat.<br><br>
+ * Se crea dentro de un componente JTextPane y simula un chat lanzando cada un tiempo aleatorio un 
+ * mensaje lanzado por un supuesto interlocutor.<br><br>También decora las líneas de cada usuario con 
+ * un color diferente, agregandole facilidad de reconocimiento de cada interlocutor.<br><br>También crea 
+ * un botón y una caja de texto para que el usuario activo pueda mandar sus mensajes.
+ * 
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class FakeChat extends JFrame{	
 	
+    
 	/*
 	 * Campos
 	 */
+    	private static final long serialVersionUID = 1L;
 	private int delay;
 	private Timer timer;
 	private JTextPane chatArea;
@@ -43,6 +55,8 @@ public class FakeChat extends JFrame{
 	 * Constructor de la clase.<br>
 	 * Se le pasa como argumento el componente(un JTextPane) sobre el que vamos a inicializar el chat.
 	 * @param area = El cmponente(JTextPane) sobre el que queremos ejecutar la clase.
+	 * @author adrSoft
+	 * @version vAlpha10
 	 */
 	public FakeChat(JTextPane area) {
 		this.chatArea = area;
@@ -56,7 +70,7 @@ public class FakeChat extends JFrame{
 	  * Envia un mensaje al chat en un intervalo de entre medio segundo y 6 segundos, pintando
 	  * cada interlocutor con un color diferente para una facil diferenciación.
 	  * @author adrSoft
-	  * @version 1.0
+	  * @version vAlpha10
 	  * @param chatArea = Componente(TextPane) sobre el que queremos ejecutar el método  chat.
 	  */
 	protected void chat(final JTextPane chatArea) {
@@ -86,6 +100,8 @@ public class FakeChat extends JFrame{
 	/**
 	 * Método encargado de añadir un mensaje personalizado al componente indicado.
 	 * Se encarga de aplicarle un color y de añadir un salto de línea despues de añadirlo.
+	 * @author adrSoft
+	 * @version vAlpha10
 	 * @param tp = Componente al que añadir el mensaje.
 	 * @param msg = El mensaje a añadir.
 	 * @param c = Color deseado para el mensaje.

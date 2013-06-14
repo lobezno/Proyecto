@@ -3,8 +3,6 @@ package adrsoft.scool.club;
 
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 
 import java.awt.BorderLayout;
@@ -20,7 +18,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
+/**
+ * Clase encargada de instanciar una galería de imágenes. Cada club tiene sus propias
+ * <br>imágenes, que se autocargarán una vez el usuario se haya logeado y se conozca a qué club pertenece.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Fotos extends JInternalFrame {
  
     	private static final long serialVersionUID = 1L;
@@ -47,23 +53,25 @@ public class Fotos extends JInternalFrame {
 	/**
 	 * Constructor de clase vacio.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 * @param mClub 
+	 * @param tema 
 	 */
-	public Fotos(int mClub) {
+	public Fotos(int mClub, String tema) {
 		this.club = mClub;
-		getContentPane().setBackground(new Color(153, 204, 255));
+		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 300);
 		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
 		init();
 		createEvents();
+		pintarTema(tema);
 			
 	}
 
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createEvents() {
 	    
@@ -126,13 +134,13 @@ public class Fotos extends JInternalFrame {
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 		getContentPane().setLayout(new GridLayout(2,1, 20, 20));
 		
 		panelFoto = new JPanel();
-		panelFoto.setBackground(new Color(153, 204, 255));
+		panelFoto.setBackground(UIManager.getColor("textHighlight"));
 		getContentPane().add(panelFoto);
 		panelFoto.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -141,7 +149,7 @@ public class Fotos extends JInternalFrame {
 		panelFoto.add(lblFotoGrande,BorderLayout.CENTER);
 		
 		panelGaleria = new JPanel();
-		panelGaleria.setBackground(new Color(153, 204, 255));
+		panelGaleria.setBackground(UIManager.getColor("textHighlight"));
 		getContentPane().add(panelGaleria);
 		panelGaleria.setLayout(new GridLayout(1, 6, 10, 10));
 		
@@ -159,6 +167,7 @@ public class Fotos extends JInternalFrame {
 		pFoto1.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		lblFoto1 = new JLabel("");
+		lblFoto1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto1.setBackground(new Color(153, 204, 255));
 	
 		pFoto1.add(lblFoto1);
@@ -169,6 +178,7 @@ public class Fotos extends JInternalFrame {
 		pFoto2.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		lblFoto2 = new JLabel("");
+		lblFoto2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto2.setBackground(new Color(153, 204, 255));
 		pFoto2.add(lblFoto2);
 		
@@ -178,6 +188,7 @@ public class Fotos extends JInternalFrame {
 		pFoto3.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		lblFoto3 = new JLabel("");
+		lblFoto3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto3.setBackground(new Color(153, 204, 255));
 		pFoto3.add(lblFoto3);
 		
@@ -187,6 +198,7 @@ public class Fotos extends JInternalFrame {
 		pFoto4.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		lblFoto4 = new JLabel("");
+		lblFoto4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFoto4.setBackground(new Color(153, 204, 255));
 		pFoto4.add(lblFoto4);
 		
@@ -203,7 +215,51 @@ public class Fotos extends JInternalFrame {
 		lblFoto3.setIcon(galeria.getPreview(2));
 		lblFoto4.setIcon(galeria.getPreview(3));
 
-	    
+	}
+	
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			getContentPane().setBackground(UIManager.getColor("textHighlight"));
+			panelFoto.setBackground(UIManager.getColor("textHighlight"));
+			panelGaleria.setBackground(UIManager.getColor("textHighlight"));
+			panelFoto.setBackground(UIManager.getColor("textHighlight"));
+			lblFoto1.setBackground(new Color(153, 204, 255));
+			lblFoto2.setBackground(new Color(153, 204, 255));
+			lblFoto3.setBackground(new Color(153, 204, 255));
+			lblFoto4.setBackground(new Color(153, 204, 255));
+		
+		}
+		else if(tema.equals("oscuro")){
+			getContentPane().setBackground(Color.BLACK);
+			panelFoto.setBackground(Color.BLACK);
+			panelGaleria.setBackground(Color.BLACK);
+			panelFoto.setBackground(Color.BLACK);
+			pFoto1.setBackground(Color.GRAY);
+			pFoto2.setBackground(Color.GRAY);
+			pFoto3.setBackground(Color.GRAY);
+			pFoto4.setBackground(Color.GRAY);
+		
+		
+		}
+		else if(tema.equals("claro")){
+			getContentPane().setBackground(new Color(255, 255, 102));
+			panelFoto.setBackground(new Color(255, 255, 102));
+			panelGaleria.setBackground(new Color(255, 255, 102));
+			panelFoto.setBackground(new Color(255, 255, 102));
+			pFoto1.setBackground(new Color(255, 255, 204));
+			pFoto2.setBackground(new Color(255, 255, 204));
+			pFoto3.setBackground(new Color(255, 255, 204));
+			pFoto4.setBackground(new Color(255, 255, 204));
+		
+		}
+		
+		
 	}
 
 }

@@ -2,39 +2,71 @@ package adrsoft.scool.model;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-
-import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
-
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
-
-
-
+/**
+ * Clase encargada de leer un archivo Excel y prepararlo para su manejo.
+ * @version vAlpha10
+ * @author adrSoft
+ *
+ */
 public class LeeExcel {
+	/*
+	 * Campos
+	 */
+	private int mClub;
 
 	private JTextPane panel;
-	private String textoanterior = "";
+	
     
-    
-    public LeeExcel(JTextPane panelo){
+    /**
+     * Constructor de la clase al que le pasamos como argumento el componente donde vamos a sacar la
+     * inforamación del archivo de la hoja de cálculo.
+     * @param panelo = JTextPane al que queremos agregar las celdas que leemos del archivo Excel.
+     * @author adrSoft
+     * @version vAlpha10
+     * @param club 
+     */
+    public LeeExcel(JTextPane panelo, int club){
+    	this.mClub = club;
     	this.panel = panelo;
     	init();
     }
 
 
-
+    	/**
+	 * Inicializador de los componentes en el JFrame.
+    	 * @author adrSoft
+    	 * @version vAlpha10
+    	 * @return valorCeldaCurso
+    	 */
 	private String init() {
+		String archivo="";
 
-			//Ubicación del archivo XLS
-	        String archivo="inventarioLectura.xls";
+			//Ubicación del archivo XLS segun el club del usuario
+		switch(mClub){
+		case 1:
+			 archivo="inventarioAjedrez.xls";
+			break;
+		case 2:
+			 archivo = "inventarioLectura.xls";
+			break;
+		case 3:
+			 archivo = "inventarioVideojuegos.xls";
+			break;
+		case 4:
+			 archivo = "inventarioLectura.xls";
+			break;
+		}
+	        
 	 
 	        //Creamos un Workbook para cargar el XLS en memoria 
 	        Workbook workbook = null;
@@ -83,6 +115,8 @@ public class LeeExcel {
 	/**
 	 * Método encargado de añadir un mensaje personalizado al componente indicado.
 	 * Se encarga de aplicarle un color y de añadir un salto de línea despues de añadirlo.
+	 * @author adrSoft
+	 * @version vAlpha10
 	 * @param tp = Componente al que añadir el mensaje.
 	 * @param msg = El mensaje a añadir.
 	 * @param c = Color deseado para el mensaje.

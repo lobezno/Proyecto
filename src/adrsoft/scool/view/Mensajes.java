@@ -14,18 +14,18 @@ import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.UIManager;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
 import adrsoft.scool.model.ButtonColumn;
-import java.awt.Component;
 import java.awt.FlowLayout;
 
+/**
+ * Clase encargada de incializar una interfaz de mensajeria para el usuario.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Mensajes extends JInternalFrame {
     
         /*
@@ -42,19 +42,24 @@ public class Mensajes extends JInternalFrame {
     	private JScrollPane scrollPaneEntrada;
     	private JScrollPane scrollPaneSalida;
     	private JPanel panelTablaSalida;
+    	private JTabbedPane tabbedPane;
+    	private JPanel panelSalida;
+   
    
     	
 
 	/**
 	 * Constructor vacío de la clase.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
+	 * @param mTema 
 	 */
-	public Mensajes() {
+	public Mensajes(String tema) {
 		init();
 		rellenarTablas();
 		createEvents();
 		((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
+		pintarTema(tema);
 	}
 
 	/**
@@ -62,7 +67,7 @@ public class Mensajes extends JInternalFrame {
 	 * 
 	 * Tambien crea los botones para poder responder a estos
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void rellenarTablas() {
 	
@@ -109,7 +114,7 @@ public class Mensajes extends JInternalFrame {
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createEvents() {
 		btnNewButton.addActionListener(new ActionListener() {
@@ -134,14 +139,14 @@ public class Mensajes extends JInternalFrame {
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 		setBackground(UIManager.getColor("textHighlight"));
 		getContentPane().setBackground(UIManager.getColor("textHighlight"));
 		setBounds(100, 100, 710, 410);
 		setBorder(null);
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBackground(UIManager.getColor("textHighlight"));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -176,7 +181,7 @@ public class Mensajes extends JInternalFrame {
 		panelEntrada.setLayout(gl_panelEntrada);
 		tabbedPane.setIconAt(0,new ImageIcon(Mensajes.class.getResource("/adrsoft/scool/resources/images/low/mail_receive.png")));
 		
-		JPanel panelSalida = new JPanel();
+		panelSalida = new JPanel();
 		panelSalida.setBackground(new Color(153, 204, 255));
 		
 		tabbedPane.addTab("Mensajes enviados", null, panelSalida, null);
@@ -229,5 +234,46 @@ public class Mensajes extends JInternalFrame {
 		tabbedPane.setIconAt(2,new ImageIcon(Mensajes.class.getResource("/adrsoft/scool/resources/images/low/mail.png")));
 		getContentPane().setLayout(groupLayout);
 	
+	}
+	
+
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			
+			getContentPane().setBackground(UIManager.getColor("textHighlight"));
+			panelEntrada.setBackground(new Color(153, 204, 255));
+			panelSalida.setBackground(new Color(153, 204, 255));
+			panelTablaSalida.setBackground(new Color(153, 204, 255));
+			panelTablaEntrada.setBackground(new Color(153, 204, 255));
+			panelContacto.setBackground(new Color(153, 204, 255));
+		
+		}
+		else if(tema.equals("oscuro")){
+		
+			getContentPane().setBackground(Color.BLACK);
+			panelEntrada.setBackground(Color.GRAY);
+			panelSalida.setBackground(Color.GRAY);
+			panelTablaSalida.setBackground(Color.GRAY);
+			panelTablaEntrada.setBackground(Color.GRAY);
+			panelContacto.setBackground(Color.GRAY);
+		
+		
+		}
+		else if(tema.equals("claro")){
+			getContentPane().setBackground(new Color(255, 255, 102));
+			panelEntrada.setBackground(new Color(255, 255, 204));
+			panelSalida.setBackground(new Color(255, 255, 204));
+			panelTablaSalida.setBackground(new Color(255, 255, 204));
+			panelTablaEntrada.setBackground(new Color(255, 255, 204));
+			panelContacto.setBackground(new Color(255, 255, 204));
+		}
+		
+		
 	}
 }

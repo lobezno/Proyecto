@@ -10,8 +10,7 @@ import adrsoft.scool.view.AlumnosMain;
 
 /**
  * Renderizador y editor de botones.
- * @author apegna
- *@version 1.0
+ *@version vAlpha10
  */
 public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener, MouseListener{
 
@@ -175,6 +174,7 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
+		@SuppressWarnings("unused")
 		int row = table.convertRowIndexToModel( table.getEditingRow() );
 		fireEditingStopped();
 

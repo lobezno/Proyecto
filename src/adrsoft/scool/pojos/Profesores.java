@@ -2,14 +2,19 @@ package adrsoft.scool.pojos;
 
 import java.io.Serializable;
 
+/**
+ * Clase mapeadora de los datos de los profesores. Crea objetos Profesores los cuales podemos manipular
+ * antes de enviarlos para su almacenamiento en la base de datos.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Profesores implements Serializable{
 
 	/**
 	 * Campos
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
 	private int idprofesor;
 	private String nombre;
 	private String apellidos;
@@ -38,7 +43,7 @@ public class Profesores implements Serializable{
 	 * @param padrino = Booleano que determina si es padrino de algún club o no.
 	 * @param club = Club del que es padrino.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	public Profesores(int idprofesor, String nombre, String apellidos,
 			String dni, String direccion, String email, String password,
@@ -62,13 +67,13 @@ public class Profesores implements Serializable{
 	/**
 	 * Constructor vacío de la clase.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	public Profesores(){
 		
 	}
 
-
+	//Getters y Setters
 	public int getIdprofesor() {
 		return idprofesor;
 	}

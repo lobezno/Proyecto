@@ -8,10 +8,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
- * Clase encargada de cargar las fotos para luego manipularlas desde otra interfaz.
+ * Clase encargada de cargar las fotos para luego manipularlas desde la 
+ * clase Fotos del paquete adrsoft.scool.club
  * 
  * @author apegna
- *@version 1.0
+ *@version vAlpha10
  */
 public class Galeria {
 
@@ -22,7 +23,7 @@ public class Galeria {
     /**
      * Constructor vacio.
      * @author adrSoft
-     * @version 1.0
+     * @version vAlpha10
      * @param club2 
      */
     public Galeria(int club2){
@@ -34,26 +35,26 @@ public class Galeria {
     /**
      * Método encargado de cargar las fotos desde la carpeta "fotos".
      * @author adrSoft
-     * @version 1.0
+     * @version vAlpha10
      */
     private void cargarFotos() {
     	
     	switch(club){
     	case 1:
     		nofoto = new javax.swing.ImageIcon(getClass().getResource("/fotos/nophoto.jpg"));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/0.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/1.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/2.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/3.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/4.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/0.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/1.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/2.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/3.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/4.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/ajedrez/5.jpg")));
 	        break;
     	case 2: 
     		nofoto = new javax.swing.ImageIcon(getClass().getResource("/fotos/nophoto.jpg"));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/0.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/1.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/2.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/3.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/4.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/atletismo/0.JPG")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/atletismo/1.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/atletismo/2.jpg")));
+	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/atletismo/3.JPG")));
 	        break;
     	case 3:
     		nofoto = new javax.swing.ImageIcon(getClass().getResource("/fotos/nophoto.jpg"));
@@ -74,13 +75,7 @@ public class Galeria {
 	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/4.jpg")));
 	        break;
     	}
-	    	nofoto = new javax.swing.ImageIcon(getClass().getResource("/fotos/nophoto.jpg"));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/0.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/1.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/2.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/3.jpg")));
-	        fotos.add(new javax.swing.ImageIcon(getClass().getResource("/fotos/clubs/lectura/4.jpg")));
-
+	    	
 	}
 
 
@@ -88,6 +83,7 @@ public class Galeria {
      * Devuelve una imagen de tamaño 100x100 como una vista previa
      * @author adrSoft
      * @param num = Indice de la foto elegida
+     * @version vAlpha10
      * 
      */
     public Icon getPreview(int num){
@@ -109,6 +105,7 @@ public class Galeria {
      * @author adrSoft
      * @param num = Indice de la foto elegida
      * @param d = Dimensión de la foto
+     * @version vAlpha10
      * 
      */
    public Icon getFoto(int num, Dimension d){
@@ -138,6 +135,7 @@ public class Galeria {
     * @author adrSoft
     * @param i = Imagen a tratar.
     * @param v = Valor de redimensionado 
+    * @version vAlpha10
     * 
     */
     private ImageIcon Disminuir(ImageIcon i, float v){
@@ -151,7 +149,7 @@ public class Galeria {
     /**
      * Devuelve el valor de escalado para redimensionar la imagen.
      * @author adrSoft
-     * @version 1.0
+     * @version vAlpha10
      * @param a
      * @param b
      */

@@ -6,8 +6,6 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
-
-import javax.swing.JTextArea;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -16,9 +14,15 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+/**
+ * Clase encargada de instanciar la seccion de Noticias del club. Son paneles estáticos con la información<br>
+ * de la noticia en su interior, que cambian según el club al que pertenezca el usuario.
+ * @author adrSoft
+ * @version vAlpha10
+ *
+ */
 public class Noticias extends JInternalFrame {
 
     private static final long serialVersionUID = 1L;
@@ -30,22 +34,30 @@ public class Noticias extends JInternalFrame {
     private JTextPane body3;
     private JTextPane body2;
     private JTextPane body1;
+    private JPanel panelNoticia1;
+    private JPanel panelNoticia2;
+    private JPanel PanelNoticia3;
 
     /**
 	 * Constructor de la clase con un argumento, idClub, que es el club del usuario activo.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 * @param idClub = Identificador del club al que pertenece el usuario activo.
+     * @param tema 
 	 */
-	public Noticias(int idClub) {
+	public Noticias(int idClub, String tema) {
 	    this.mIdClub = idClub;
 	    ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).setNorthPane(null);
 		init();
 		cargarNoticias();
-		
+		pintarTema(tema);
 	}
 
-	
+	/**
+	 * Método encargado de, según el club del usuario activo, cargar las noticias referentes a su club extraescolar.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 */
 	private void cargarNoticias() {
 
 		String haje1 = "Torneo a la vista!";
@@ -80,6 +92,7 @@ public class Noticias extends JInternalFrame {
 	   switch(mIdClub){
 	       case 1:
 	    	   header1.setText(haje1);
+	    	   body1.setText(baje1);
 	    	   header2.setText(haje2);
 	    	   body2.setText(baje2);
 	    	   header3.setText(haje3);
@@ -119,7 +132,7 @@ public class Noticias extends JInternalFrame {
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void init() {
 	    getContentPane().setBackground(UIManager.getColor("textHighlight"));
@@ -162,7 +175,7 @@ public class Noticias extends JInternalFrame {
 		gbl_panel.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		JPanel panelNoticia1 = new JPanel();
+		panelNoticia1 = new JPanel();
 		panelNoticia1.setEnabled(false);
 		panelNoticia1.setBackground(new Color(153, 204, 255));
 		GridBagConstraints gbc_panelNoticia1 = new GridBagConstraints();
@@ -203,7 +216,7 @@ public class Noticias extends JInternalFrame {
 		);
 		panelNoticia1.setLayout(gl_panelNoticia1);
 		
-		JPanel panelNoticia2 = new JPanel();
+		panelNoticia2 = new JPanel();
 		panelNoticia2.setBackground(new Color(153, 204, 255));
 		GridBagConstraints gbc_panelNoticia2 = new GridBagConstraints();
 		gbc_panelNoticia2.insets = new Insets(0, 0, 10, 0);
@@ -243,7 +256,7 @@ public class Noticias extends JInternalFrame {
 		);
 		panelNoticia2.setLayout(gl_panelNoticia2);
 		
-		JPanel PanelNoticia3 = new JPanel();
+		PanelNoticia3 = new JPanel();
 		PanelNoticia3.setBackground(new Color(153, 204, 255));
 		GridBagConstraints gbc_PanelNoticia3 = new GridBagConstraints();
 		gbc_PanelNoticia3.fill = GridBagConstraints.BOTH;
@@ -282,6 +295,48 @@ public class Noticias extends JInternalFrame {
 		);
 		PanelNoticia3.setLayout(gl_PanelNoticia3);
 		getContentPane().setLayout(groupLayout);
+		
+	}
+	
+	/**
+	 * Método encargado de renderizar el aspecto visual en relación con el tema escogido.
+	 * @author adrSoft
+	 * @version vAlpha10
+	 * @param tema = Tema seleccionado en la barra de herramientas.
+	 */
+	private void pintarTema(String tema) {
+		if(tema.equals("classic")){
+			getContentPane().setBackground(UIManager.getColor("textHighlight"));
+			panel.setBackground(UIManager.getColor("textHighlight"));
+			panelNoticia1.setBackground(new Color(153, 204, 255));
+			panelNoticia2.setBackground(new Color(153, 204, 255));
+			PanelNoticia3.setBackground(new Color(153, 204, 255));
+			body1.setBackground(new Color(153, 204, 255));
+			body2.setBackground(new Color(153, 204, 255));
+			body3.setBackground(new Color(153, 204, 255));
+		}
+		else if(tema.equals("oscuro")){
+			getContentPane().setBackground(Color.BLACK);
+			panel.setBackground(Color.BLACK);
+			panelNoticia1.setBackground(Color.GRAY);
+			panelNoticia2.setBackground(Color.GRAY);
+			PanelNoticia3.setBackground(Color.GRAY);
+			body1.setBackground(Color.GRAY);
+			body2.setBackground(Color.GRAY);
+			body3.setBackground(Color.GRAY);
+		
+		}
+		else if(tema.equals("claro")){
+			getContentPane().setBackground(new Color(255, 255, 102));
+			panel.setBackground(new Color(255, 255, 102));
+			panelNoticia1.setBackground(new Color(255, 255, 204));
+			panelNoticia2.setBackground(new Color(255, 255, 204));
+			PanelNoticia3.setBackground(new Color(255, 255, 204));
+			body1.setBackground(new Color(255, 255, 204));
+			body2.setBackground(new Color(255, 255, 204));
+			body3.setBackground(new Color(255, 255, 204));
+		}
+		
 		
 	}
 

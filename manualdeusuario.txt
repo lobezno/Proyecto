@@ -1,0 +1,222 @@
+﻿======= sCooL =======
+=====================
+= MANUAL DE USUARIO =
+=
+====================
+=====================
+
+En este manual le vamos a informar de cómo manejar correctamente la suite sCooL.
+
+La aplicación en sí es muy intuitiva y usted se hará con el control de ella rápidamente.
+
+
+
+Para poder descargar la suite sCooL, dirijase a la pagina web http://www.arreat.es/scool y desde esa dirección podrá descargar ambas aplicaciones.
+
+La suite sCooL se divide en 2 tipos de software: Uno enfocado a los dispositivos móviles y el otro hacia el entorno de escritorio.
+
+
+
+Aplicación sCool Desktop
+
+========================
+
+
+
+Para ejecutar la aplicación basta con hacer doble click sobre el archivo sCooL.jar.
+(Usted debe tener instalado Java Runtime Enviroment)
+
+Una vez iniciada la aplicación, se le mostrará la pantalla de inicio. En esta pantalla usted debera ingresar su email de usuario así como su contraseña.
+Acuerdese bien de estos datos, ya que sin ellos no podrá acceder a la aplicación.
+
+
+
+Una vez logeado, podra ver su nombre en el titulo de la ventana principal.
+
+En esta ventana encontramos varios elementos:
+
+
+
+La barra de herramientas.
+
+La barra de herramientas se situa en el borde superior de la aplicación.
+Cuenta con un menú con 3 opciones, Aplicación, Tema y Ayuda. 
+
+En el menú Aplicación encontramos 2 submenús.
+
+El submenú Login cierra la sesión actual y le lleva a la sección de inicio, permitiendole logearse con un usuario diferente. 
+
+Salir cierra la aplicación completamnte.
+
+
+Dentro del menú tema encontramos 3 opciones: Classic,  Dark y Light. Aquí podrá seleccionar el esquema de color que más le guste.
+
+
+Por último, en el menú Ayuda, podrá encontrar la documentación relevante a esta aplicación, así como la información general de esta.
+
+
+
+El método de navegación de la aplicación es a traves de los botones de navegación situados a la izquierda del marco principal.
+
+
+Usted dispone de un boton que sirve tanto para maximizar la aplicación como para restaurarla. Se trata del boton situado en la esquina inferior izquierda del marco principal. 
+
+
+
+Si desea salir de la aplicación, lo puede realizar mediante una de las tres vias disponibles: 
+El submenú Salir de la barra de herramientas superior, mediante el boton de la cruz roja de ventana de Windows, o bien mediante el boton situado en la parte inferior derecha del marco principal.
+
+
+
+En orden descendente corresponden a su Perfil, Mensajeria, Notas del alumno, Webs sobre el centro y Club. (Si se siente perdido, solo tiene que mover el ratón encima de uno de los botones y aparecerá el contenido de este sobre el marco principal.
+
+
+
+Perfil
+
+======
+
+
+Consulta sus datos de alumno.
+Dentro de esta sección podrá encontrar un botón de editar por si quiere cambiar su información.
+
+En el momento en que pulse éste, aparecerán dos nuevos botones que le ayudarán a editar su información. 
+Con el botón Contraseña usted puede cambiar su contraseña de acceso actual. Una vez modificada, debe de pulsar el botón guardar para que sus cambios queden guardados. Antes de pulsar el botón guardar, usted podrá modificar cualquier dato simplemente cambiando el valor a su antojo en el formulario de datos.
+
+
+
+Mensajes
+
+========
+
+
+Gracias a esta interfaz usted podrá comunicarse con los demás usuarios de sCooL, así como con su tutor y profesores.
+
+Contiene 3 pestañas:
+
+La primera es la bandeja de entrada. Aquí se almacenarán los mensajes que usted ha recibido para una posterior lectura o manipulación.
+
+
+La segunda pestaña es la bandeja de salida. Aqui se encuentran los mensajes enviados por usted a los demás usuarios de la aplicación.
+
+
+En la tercera pestaña nos encontramos dos botones. El primero nos permite enviar un mensaje a cualquier usuario de la aplicación, sin necesidad de que éste esté conectado en ese momento. El segundo botón le permite enviar un mensaje directo a su tutor.
+
+
+
+
+Notas
+
+=====
+
+
+Esta vista es la encargada de mostrarle sus notas a lo largo del curso y en las diferentas materias. A parte de mótivo de información, usted también podrá contactar directamente con el profesor de una materia simplemente pinchando encima de ella y despues en el boton inferior donde dice "Contactar con.."
+
+
+
+Web
+
+===
+
+
+Desde esta seccion usted podrá visitar la web de su centro, así como directamente la intranet asociada a su usuario en el centro. 
+Para navegar entre una u otra, basta con pulsar el botón correspondiente en la parte inferior de esta sección.
+
+
+
+Club
+
+====
+
+
+
+En este apartado,  usted podrá consultar todo lo referente a su club extraescolar. Es un portal con diferentes apartados, diseñado para que de un vistazo tenga todo lo necesario para una buena gestión de su club. 
+
+Encontrará  una botonera en la parte superior de esta seccion que le ayudará a navegar entre los diferentes apartados.
+
+
+Los posibles escenarios son:
+
+
+
+- Informacion
+Aqui encontrará toda la informacion relacionada con el tema de su club.
+
+- Normas
+Un compendio de normas mínimas que usted debe respetar si quiere ser parte de este club.
+
+- Noticias 
+En este apartado usted verá las noticias más recientes de su club, publicadas por el grupo de miembros que tengan permisos para ello.
+
+- Miembros
+Aqui podrá consultar una lista de los miembros actuales del club, así como su cometido dentro de este, y podrá contactar directamente con ellos a traves del boton que tiene cada uno en su linea de perfil.
+
+- Inventario
+En esta sección podrá consultar el inventario del club. Consiste en una hoja de cálculo(formato Excel) que contiene los datos de los materiales que ustedes usan en su club, asi como las asignaciones de los materiales y los encargados de ellos.
+
+- Fotos
+Galeria en la cual podrá ver las fotos más recientes sacadas en su club. Los usuario también pueden subir sus propias fotos a la galería, siempre y cuando estén relacionadas con el club.
+
+- Enlaces
+Su club también cuenta con una colección de enlaces a páginas de interes que usted podrá consultar. Se recogen en esta sección y cada uno de ellos se abrirá en su explorador predeterminado. 
+Opcion válida solo para usuarios de Windows y Mac OS.
+
+
+
+Usted dispone de un calendario para consultar la fecha actual y poder almacenar citas y futuros eventos (Proximamente).
+
+
+
+Puede tener una conversación rápida con cualquiera de los usuarios conectados simultaneamente con usted a traves del Chat. 
+Simplemente escriba una frase en la caja de texto y pulse enviar. Los demás interlocutores recibirán su mensaje inmediatamente.
+
+
+
+
+Aplicación sCool móvil
+
+========================
+
+
+
+Gracias a la aplicación sCooL Movil usted podrá estar al dia de las novedades de su club en cualquier parte y a cualquier momento.
+
+
+La aplicación sCool Movil es un software para dispositivos móviles (tanto telefonos como tablets) cuya funcion, a diferencia de la aplicacion sCooL Desktop, se centra unica y exclusivamente en su club extraescolar.
+
+
+Una vez iniciada la aplicación, se le pedirá logearse con su usuario y contraseña, los cuales son los mismos que en la aplicación desktop.
+
+
+Una vez dentro, el modelo de navegación le será familiar.
+
+Dispone de un grupo de botones en la parte izquierda de la aplicación con los cuales puede navegar por este portal.
+
+
+Las secciones son:
+
+
+
+Información
+
+===========
+
+Un resumen de la información básica de su club. Es una pequeña introducción al contenido y normas de su club.
+
+
+Miembros
+
+=======
+
+Un listado con los miembros actuales de su club. Dependiendo de su nivel de permisos, podra contactar con ellos, añadir nuevos miembros, borrar los que ya no necesite o continuen siendo parte del club, así como poder asignar rangos y privilegios dentro de estos.
+
+
+Juego
+
+=====
+
+En esta seccion encontrará un pequeño minijuego relacionado con las actividades del club.
+
+
+
+Esperamos que la documentación le ayude con el uso de esta suite. Si tiene alguna duda, no dude en ponerse en contacto con adrSoft a traves del email de contaco: info@adrsoft.com

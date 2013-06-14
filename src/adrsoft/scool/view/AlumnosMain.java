@@ -17,7 +17,8 @@ import javax.swing.JToolBar;
 import javax.swing.JDesktopPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
-
+import adrsoft.scool.model.AbreDocumento;
+import adrsoft.scool.model.AbrirUrl;
 import adrsoft.scool.model.FakeChat;
 import adrsoft.scool.pojos.Alumnos;
 import com.toedter.calendar.JCalendar;
@@ -40,21 +41,20 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Toolkit;
 
 /**
  * Clase encargada de renderizar el menú principal de los alumnos.
  * @author adrSoft
- *@version 1.0
+ *@version vAlpha10
  */
 public class AlumnosMain extends JFrame {
-
-
-    private static final long serialVersionUID = 1L;
-
 
 	/*
 	 * Campos
 	 */
+    	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuItem mntmInformacin;
 	private JMenuItem mntmDocumentacin;
@@ -93,21 +93,29 @@ public class AlumnosMain extends JFrame {
 	private JTextPane chatArea;
 	private FakeChat fakeChat;
 	private JLabel lblNewLabel;
+	private JPanel panelCalendario;
+	private JMenuItem mntmApi;
 
 
 	/**
 	 * Constructor de clase sin parametros.
+	 * @author adrSoft
+	 * @version vAlpha10
 	 */
 	public AlumnosMain() {
+		
 		setBackground(UIManager.getColor("activeCaption"));
 		init();
 		createEvents();
 		createConnection();
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/milogo3.png")));
 	}
 	
 	/**
 	 * Constructor que necesita varios parametros para la posterior personalización de  
 	 * las caracteristicas de la vista.
+	 * @author adrSoft
+	 * @version vAlpha10
 	 * @param mail = Email del alumno
 	 * @param nom = Nombre del alumno
 	 * @param ape = Apellidos del alumno	
@@ -133,7 +141,7 @@ public class AlumnosMain extends JFrame {
 	/**
 	 * Inicializador de la conexión entre la aplicación y la base de datos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createConnection() {
 	     	
@@ -148,7 +156,7 @@ public class AlumnosMain extends JFrame {
 	/**
 	 * Inicializador de los componentes en el JFrame.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version 
 	 */
 	private void init() {
 	    	
@@ -182,24 +190,30 @@ public class AlumnosMain extends JFrame {
 		
 		mntmClassic = new JMenuItem("Classic");
 
-		mntmClassic.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/50_percent_off.png")));
+		mntmClassic.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/low/classic.png")));
 		mnTema.add(mntmClassic);
 		
 		mntmDark = new JMenuItem("Dark");
 
-		mntmDark.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/50_percent_off.png")));
+		mntmDark.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/low/dark.png")));
 		mnTema.add(mntmDark);
 		
 		mntmLight = new JMenuItem("Light");
-		mntmLight.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/50_percent_off.png")));
+		mntmLight.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/low/light.png")));
 		mnTema.add(mntmLight);
 		
 		JMenu mnInformacin = new JMenu("Ayuda");
 		menuBar.add(mnInformacin);
 		
 		mntmDocumentacin = new JMenuItem("Documentaci\u00F3n");
+	
 		mntmDocumentacin.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/mid/full_page.png")));
 		mnInformacin.add(mntmDocumentacin);
+		
+		mntmApi = new JMenuItem("API sCooL");
+	
+		mntmApi.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/low/process.png")));
+		mnInformacin.add(mntmApi);
 		
 		mntmInformacin = new JMenuItem("Informaci\u00F3n");
 	
@@ -218,9 +232,9 @@ public class AlumnosMain extends JFrame {
 		mDesktopPane = new JDesktopPane();
 		mDesktopPane.setBackground(new Color(153, 204, 255));
 		contentPane.add(mDesktopPane);
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(153, 204, 255));
-		panel.add(mCalendario);
+		panelCalendario = new JPanel();
+		panelCalendario.setBackground(new Color(153, 204, 255));
+		panelCalendario.add(mCalendario);
 		
 		lblMouseOver = new JLabel("");
 		lblMouseOver.setHorizontalAlignment(SwingConstants.CENTER);
@@ -243,6 +257,7 @@ public class AlumnosMain extends JFrame {
 		panelChat.setBackground(new Color(153, 204, 255));
 		
 		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		textChat = new JTextField();
 		textChat.setColumns(10);
@@ -303,7 +318,7 @@ public class AlumnosMain extends JFrame {
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 							.addComponent(panelChat, GroupLayout.PREFERRED_SIZE, 207, Short.MAX_VALUE)
 							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+								.addComponent(panelCalendario, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
 								.addContainerGap()))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(button, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
@@ -324,7 +339,7 @@ public class AlumnosMain extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
 							.addComponent(btnMaxMin, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
+							.addComponent(panelCalendario, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(panelChat, GroupLayout.PREFERRED_SIZE, 305, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
@@ -356,14 +371,14 @@ public class AlumnosMain extends JFrame {
 		btnWebs = new JButton("");
 		
 		btnWebs.setBackground(UIManager.getColor("textHighlight"));
-		btnWebs.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/office_folders.png")));
+		btnWebs.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/search_globe.png")));
 		toolBar.add(btnWebs);
 		
 		btnClub = new JButton("");
 
 	
 		btnClub.setBackground(UIManager.getColor("textHighlight"));
-		btnClub.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/package.png")));
+		btnClub.setIcon(new ImageIcon(AlumnosMain.class.getResource("/adrsoft/scool/resources/images/high/club2.png")));
 		toolBar.add(btnClub);
 		contentPane.setLayout(gl_contentPane);
 	
@@ -377,7 +392,7 @@ public class AlumnosMain extends JFrame {
 	 * 
 	 * El usuario es filtrado por su email.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 * @param email = email del usuario activo
 	 */
 	private void rellenarPerfil() {
@@ -399,7 +414,7 @@ public class AlumnosMain extends JFrame {
 	/**
 	 * Método encargado de crear los eventos asignados a los botones y otros controles interactivos.
 	 * @author adrSoft
-	 * @version 1.0
+	 * @version vAlpha10
 	 */
 	private void createEvents(){
 	    	//Botón Información
@@ -441,7 +456,7 @@ public class AlumnosMain extends JFrame {
 		//Boton de Mensajes
 		btnMensajes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mMensajes = new Mensajes();
+				mMensajes = new Mensajes(tema);
 				mMensajes.setVisible(true);
 				
 				mDesktopPane.add(mMensajes);
@@ -458,7 +473,7 @@ public class AlumnosMain extends JFrame {
 		//Boton de Club
 		btnClub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mClub = new Club(mIdClub);
+				mClub = new Club(mIdClub,tema);
 				mClub.setVisible(true);
 				mClub.setBorder(null);
 				
@@ -478,7 +493,7 @@ public class AlumnosMain extends JFrame {
 			
 
 			public void actionPerformed(ActionEvent arg0) {
-				mNotas = new Notas();
+				mNotas = new Notas(tema);
 				mNotas.setVisible(true);
 				mNotas.setBorder(null);
 				mDesktopPane.add(mNotas);
@@ -496,7 +511,8 @@ public class AlumnosMain extends JFrame {
 		//Boton de login 
 		mntmLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+//				dispose();
+				setVisible(false);
 				Inicio ini = new Inicio();
 				ini.setVisible(true);
 				
@@ -506,7 +522,7 @@ public class AlumnosMain extends JFrame {
 		//Boton de webs
 		btnWebs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Webs mWebs = new Webs();
+				Webs mWebs = new Webs(tema);
 				mWebs.setVisible(true);
 				mWebs.setBorder(null);
 				mDesktopPane.add(mWebs);
@@ -594,6 +610,10 @@ public class AlumnosMain extends JFrame {
 				btnNotas.setBackground(Color.GRAY);
 				btnWebs.setBackground(Color.GRAY);
 				btnClub.setBackground(Color.GRAY);
+				panelChat.setBackground(Color.GRAY);
+				panelCalendario.setBackground(Color.GRAY);
+				invalidate();
+
 			}
 		});
 		
@@ -609,6 +629,10 @@ public class AlumnosMain extends JFrame {
 				btnNotas.setBackground(UIManager.getColor("textHighlight"));
 				btnWebs.setBackground(UIManager.getColor("textHighlight"));
 				btnClub.setBackground(UIManager.getColor("textHighlight"));
+				panelCalendario.setBackground(new Color(153, 204, 255));
+				panelChat.setBackground(new Color(153, 204, 255));
+				invalidate();
+			
 			}
 		});
 		
@@ -616,6 +640,18 @@ public class AlumnosMain extends JFrame {
 		mntmLight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tema = "claro";
+				mDesktopPane.setBackground(new Color(255, 255, 204));
+				contentPane.setBackground(new Color(255, 255, 102));
+				toolBar.setBackground(new Color(255, 255, 102));
+				btnPerfil.setBackground(new Color(255, 255, 102));
+				btnMensajes.setBackground(new Color(255, 255, 102));
+				btnNotas.setBackground(new Color(255, 255, 102));
+				btnWebs.setBackground(new Color(255, 255, 102));
+				btnClub.setBackground(new Color(255, 255, 102));
+				panelCalendario.setBackground(new Color(255, 255, 204));
+				panelChat.setBackground(new Color(255, 255, 204));
+				invalidate();
+				
 			}
 		});
 		
@@ -678,6 +714,23 @@ public class AlumnosMain extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e){
 				lblMouseOver.setText("");
+			}
+		});
+		
+		//Botón de documentación
+		mntmDocumentacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+				
+			AbreDocumento docu = new AbreDocumento();
+			docu.setVisible(true);
+			}
+		});
+		
+		//Botón API
+		mntmApi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new AbrirUrl("http://arreat.es/scool/doc/");
 			}
 		});
 	}
